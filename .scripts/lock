@@ -1,0 +1,1 @@
+(sleep 1; sh /home/lubomir/.config/lock.sh) &

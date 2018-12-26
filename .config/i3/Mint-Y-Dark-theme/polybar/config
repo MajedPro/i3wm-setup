@@ -1,0 +1,437 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[colors]
+;background = ${xrdb:color0:#222}
+background = #181818
+background-alt = #444444
+;foreground = ${xrdb:color7:#222}
+foreground = #FFFFFF
+foreground-alt = #555555
+primary = #8FA876
+secondary = #e60053
+alert = #bd2c40
+
+[bar/example]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 23
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = false
+bottom = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+overline-size = 1
+overline-color = #f00
+underline-size = 1
+underline-color = #00f
+
+border-top-size = 0
+border-top-color = #757D85
+;border-top-color = #009BAE
+
+border-bottom-size = 1
+border-bottom-color = #757D85
+
+border-left-size = 0
+border-left-color = #009BAE
+
+border-right-size = 0
+border-right-color = #009BAE
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 3
+module-margin-right = 3
+
+; The separator will be inserted between the output of each module
+separator = %{F#535353}//%{F-}
+
+font-0 = Roboto:pixelsize=10;2
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+font-3 = FontAwesome:pixelsize=10;2
+font-4 = Monaco:pixelsize=10;2
+
+modules-left = bspwm i3
+modules-center = mpd
+modules-right = uptime gmail home filesystem memory eth temperature cpu volume date xkeyboard network wired-network powermenu
+
+tray-position = right
+tray-padding = 0
+;tray-transparent = true
+;tray-background = #004C56
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.primary}
+label-focused-overline = ${colors.primary}
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+pin-workspaces = true
+index-sort = true
+wrapping-scroll = false
+
+;ws-icon-0 = 1;
+;ws-icon-1 = 2;
+;ws-icon-2 = 3;
+;ws-icon-3 = 4;
+;ws-icon-4 = 5;
+ws-icon-default = 
+
+label-dimmed-underline = ${root.background}
+
+label-mode-padding = 2
+label-mode-foreground = #0C0E0E
+label-mode-background = #86B15A
+;label-mode-overline = #FFB52A
+
+label-focused = %name%:  %icon%
+label-focused-foreground = #f3f3f3
+label-focused-background = #3f3f3f
+label-focused-overline = #8FA876
+;label-focused-underline = #8FA876
+label-focused-font = 0
+label-focused-padding = 2
+
+label-unfocused = %name%:  %icon%
+label-unfocused-overline = #3f3f3f
+;label-unfocused-underline = #3f3f3f
+label-unfocused-font = 0
+label-unfocused-padding = 2
+
+label-urgent = %name%:  %icon%
+label-urgent-foreground = #0B1214
+label-urgent-background = #FFB52A
+label-urgent-overline = #FFB52A
+;label-urgent-underline = #FFB52A
+label-urgent-font = 0
+label-urgent-padding = 2
+
+label-visible = %name%:  %icon%
+label-visible-foreground = #55ffffff
+label-visible-font = 0
+label-visible-padding = 2
+
+
+[module/mpd]
+type = internal/mpd
+host = 127.0.0.1
+port = 6600
+;password = mysecretpassword
+
+interval = 1
+
+format-online = %{F#A6A6A6}<label-time>%{F-}   <bar-progress>   %{F#A6A6A6}<label-song>%{F-}
+;format-online = %{F#9F9F9F}<label-song>    <icon-stop>    <toggle>    <icon-prev>    <icon-next>%{F-}
+
+; Available tags:
+;   <label-offline>
+;format-offline = <label-offline>
+
+; Available tokens:
+;   %artist%
+;   %album-artist%
+;   %album%
+;   %date%
+;   %title%
+; Default: %artist% - %title%
+label-song = %artist% - %title%
+
+; Available tokens:
+;   %elapsed%
+;   %total%
+; Default: %elapsed% / %total%
+label-time = %elapsed% / %total%
+
+; Available tokens:
+;   None
+label-offline = 🎜 mpd is offline
+
+; Only applies if <icon-X> is used
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-seekb = ⏪
+icon-seekf = ⏩
+icon-random = 
+icon-repeat = 
+;icon-repeatone = 🔂
+;icon-single = 🔂
+icon-consume = ✀
+
+; Used to display the state of random/repeat/repeatone/single
+; Only applies if <icon-[random|repeat|repeatone|single]> is used
+toggle-on-foreground = #ff
+toggle-off-foreground = #55
+
+; Only applies if <bar-progress> is used
+bar-progress-width = 20
+bar-progress-indicator = |
+bar-progress-fill = %{F#6C9247}-%{F-}
+bar-progress-empty = %{F#555555}-%{F-}
+
+[module/uptime]
+type = custom/script
+label = %{F#FFEFD0}%output%%{F-}
+exec = uptime -p
+interval = 5
+
+[module/gmail]
+type = custom/script
+label = %{F#8CBA5F}  %output%%{F-}
+interval = 30
+exec = ~/.scripts/gmail.py
+click-left = thunderbird &
+
+[module/home]
+type = internal/fs
+interval = 25
+
+mount-0 = /home
+
+; Available tokens:
+;   %mountpoint%
+;   %type%
+;   %fsname%
+;   %percentage_free%
+;   %percentage_used%
+;   %total%
+;   %free%
+;   %used%
+; Default: %mountpoint% %percentage_free%%
+label-mounted = %{F#FFFFFF}  %percentage_used%%%{F-}
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+; Available tokens:
+;   %mountpoint%
+;   %type%
+;   %fsname%
+;   %percentage_free%
+;   %percentage_used%
+;   %total%
+;   %free%
+;   %used%
+; Default: %mountpoint% %percentage_free%%
+label-mounted = %{F#FFA4A4}  %percentage_used%%%{F-}
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+;format-overline = #4bffdc
+label = RAM %percentage_used%%
+
+[module/eth]
+type = internal/network
+interface = enp2s0
+interval = 2
+
+;format-connected-overline = #55aa55
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %{F#8CBA5F}  %local_ip% (%downspeed%)%{F-}
+
+;format-disconnected = ∅ disconnected
+format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+interval = 1
+warn-temperature = 60
+
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon0/temp1_input
+
+format = <ramp> <label>
+;format-overline = #f50a4d
+format-warn = <ramp> <label-warn>
+;format-warn-overline = ${self.format-underline}
+
+label =  %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+;format-overline = #f90000
+label = CPU %percentage:2%%
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL %percentage%%
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #6C9247
+bar-volume-foreground-1 = #6C9247
+bar-volume-foreground-2 = #6C9247
+bar-volume-foreground-3 = #6C9247
+bar-volume-foreground-4 = #6C9247
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = true
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = -
+bar-volume-fill-font = 2
+bar-volume-empty = -
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 1
+
+date =
+date-alt = " %Y-%m-%d  "
+
+time =  %H:%M
+time-alt = %H:%M
+
+format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+;format-overline = #0a6cf5
+
+label = %date% %time%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+;format-prefix-overline = ${colors.secondary}
+
+; Available tokens:
+;   %layout%
+;   %name%
+;   %number%
+; Default: %layout%
+label-layout = %layout%
+;label-layout-overline = ${colors.secondary}
+
+; Available tokens:
+;   %name%
+; Default: %name%
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+;label-indicator-overline = ${colors.secondary}
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.secondary}
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

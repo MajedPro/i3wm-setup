@@ -1,0 +1,12 @@
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set selection-clipboard clipboard
+set first-page-column 1:1
+#set adjust_open width
+
+map + zoom in
+map - zoom out
+map r rotate-cw
+map Shift-r rotate-ccw
+
+
