@@ -30,7 +30,7 @@
 	spacing: 2;
 	background-color: transparent;
 
-	font: "Roboto Mono 13";
+	font: "FontAwesome 13";
 }
 
 window {

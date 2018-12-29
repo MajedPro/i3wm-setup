@@ -1,0 +1,77 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1052,
+       "width": 1916,
+       "x": 0,
+       "y": 0
+    },
+    "name": "i3: Layout saving in i3 - Mozilla Firefox",
+    "percent": 0.71,
+    "swallows": [
+       {
+       // "class": "^Firefox$",
+       // "instance": "^Navigator$",
+       // "title": "^i3\\:\\ Layout\\ saving\\ in\\ i3\\ \\-\\ Mozilla\\ Firefox$",
+       // "window_role": "^browser$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    // splitv split container with 2 children
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.29,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 334,
+               "width": 941,
+               "x": 965,
+               "y": 10
+            },
+            "name": "SMPlayer",
+            "percent": 0.32,
+            "swallows": [
+               {
+               // "class": "^smplayer$",
+               // "instance": "^smplayer$",
+               // "title": "^SMPlayer$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 514,
+               "width": 914,
+               "x": 0,
+               "y": 0
+            },
+            "name": "lubomir@darkstar:~",
+            "percent": 0.68,
+            "swallows": [
+               {
+               // "class": "^URxvt$",
+               // "instance": "^urxvt$",
+               // "title": "^lubomir\\@darkstar\\:\\~$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+

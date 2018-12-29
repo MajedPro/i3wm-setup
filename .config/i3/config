@@ -17,7 +17,7 @@ font pango:Noto Sans bold 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+#font pango:Roboto bold 9
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -72,17 +72,19 @@ bindsym $mod+Tab workspace back_and_forth
 
 # Start Applications
 bindsym $mod+F1 exec thunar
+#bindsym $mod+F1 exec nautilus --new-window
 bindsym $mod+F2 exec firefox
 bindsym $mod+Shift+F2 exec firefox -private-window
 #bindsym $mod+F2 exec --no-startup-id google-chrome-stable
 bindsym $mod+F3 exec thunderbird
 #bindsym $mod+c exec --no-startup-id "rofi -modi window,drun, -show drun -font 'hack 11' -show -columns 2"
-bindsym $mod+c exec --no-startup-id rofi -show drun
+#bindsym $mod+c exec --no-startup-id rofi -show drun
+bindsym $mod+c exec --no-startup-id rofi -show drun -show-icons -drun-icon-theme Newaita-holidays-dark
 bindsym $mod+Shift+f exec --no-startup-id rofi  -show find -modi find:~/.scripts/finder.sh
 # bindsym $mod+F4 exec ranger
 bindsym $mod+Shift+F3 exec gksu geany
-bindsym $mod+F5 exec urxvt -e 'htop'
-bindsym $mod+g exec geany
+bindsym $mod+F5 exec urxvt -e htop
+bindsym $mod+g exec subl
 bindsym $mod+n exec urxvt -e ncmpcpp
 bindsym $mod+m exec smplayer
 #bindsym $mod+b exec --no-startup-id sh /home/lubomir/.scripts/networkmanager_dmenu.sh
@@ -143,7 +145,7 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 #bindsym $mod+Shift+space floating toggle
 #bindsym $mod+s floating toggle
-bindsym $mod+s floating toggle resize set 1200 800;move position center
+bindsym $mod+s floating toggle resize set 1200 800; move position center
 
 # Toggle between dock mode and hide mode
 bindsym $mod+h bar mode toggle
@@ -168,61 +170,48 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-## switch to workspace - povodne
-set $workspace1 " 1:  "
-set $workspace2 " 2:  "
-set $workspace3 " 3:  "
-set $workspace4 " 4:  "
-set $workspace5 " 5:  "
-set $workspace6 " 6:  "
-set $workspace7 " 7:  "
-set $workspace8 " 8:  "
-set $workspace9 " 9:  "
-##set $workspace10 "Desk 10" # zakomentovane, lebo "mod+0" som nastavil na logout menu
+## POLYBAR setings
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
 
-## switch to workspace
-#set $workspace1 "1: "
-#set $workspace2 "2: "
-#set $workspace3 "3: "
-#set $workspace4 "4: "
-#set $workspace5 "5: "
-#set $workspace6 "6: "
-#set $workspace7 "7: "
-#set $workspace8 "8: "
-#set $workspace9 "9: "
+# POLYBAR setings
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
 
-# switch to workspace
-bindsym $mod+1 workspace $workspace1
-bindsym $mod+2 workspace $workspace2
-bindsym $mod+3 workspace $workspace3
-bindsym $mod+4 workspace $workspace4
-bindsym $mod+5 workspace $workspace5
-bindsym $mod+6 workspace $workspace6
-bindsym $mod+7 workspace $workspace7
-bindsym $mod+8 workspace $workspace8
-bindsym $mod+9 workspace $workspace9
+# move focused container to workspace POLYBAR
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
 #set $workspace10 "Desk 10" # zakomentovane, lebo "mod+0" som nastavil na logout menu
 
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $workspace1
-bindsym $mod+Shift+2 move container to workspace $workspace2
-bindsym $mod+Shift+3 move container to workspace $workspace3
-bindsym $mod+Shift+4 move container to workspace $workspace4
-bindsym $mod+Shift+5 move container to workspace $workspace5
-bindsym $mod+Shift+6 move container to workspace $workspace6
-bindsym $mod+Shift+7 move container to workspace $workspace7
-bindsym $mod+Shift+8 move container to workspace $workspace8
-bindsym $mod+Shift+9 move container to workspace $workspace9
-#set $workspace10 "Desk 10" # zakomentovane, lebo "mod+0" som nastavil na logout menu
-
-## Programy na špecifických plochách i3BAR
-##assign [class="^Thunar"] $workspace1
-#assign [class="^Firefox"] $workspace2
-assign [class="^Transmission-gtk"] $workspace6
-#assign [class="^Gimp"] $workspace3
-#assign [class="^Audacious$"] $workspace4
-##assign [class="^URxvt$"] $workspace4
-#assign [class="^Thunderbird"] $workspace5
+## Programy na špecifických plochách POLYBAR
+##assign [class="^Thunar"] $ws1
+#assign [class="^Firefox"] $ws2
+assign [class="^Transmission-gtk"] $ws6
+#assign [class="^Gimp"] $ws3
+#assign [class="^Audacious$"] $ws4
+##assign [class="^URxvt$"] $ws4
+#assign [class="^Thunderbird"] $ws5
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 2
@@ -233,13 +222,15 @@ for_window [class="SuperTuxKart"] floating disable border pixel 2
 #for_window [class="OpenArena"] floating enable border pixel 2
 for_window [class="Imagewriter"] floating enable border normal
 for_window [class="vlc"] floating enable border normal 2
+for_window [class="smplayer"] floating enable;move position center border pixel 2
 for_window [class="SimpleScreenRecorder"] floating enable border normal 2
 for_window [class="Transmission-gtk"] floating disable border pixel 2
 for_window [class="Viewnior"] floating enable border normal 2
 for_window [class="Ristretto"] floating enable border normal 2
 for_window [class="Gpicview"] floating enable border normal 2
-for_window [class="feh"] floating enable border normal 2
-for_window [class="Gedit"] floating enable border normal 2
+for_window [class="Gpick"] floating enable border normal 2
+for_window [class="feh"] floating enable border pixel 2
+#for_window [class="Gedit"] floating enable border pixel 2
 for_window [class="GParted"] floating enable border normal 2
 for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Lxappearance"] floating enable sticky enable border normal 2
@@ -278,7 +269,7 @@ mode "$mode_system" {
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -313,48 +304,21 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
- colors {
-        background #1C1C1C
-        statusline #FFFFFF #white
-        separator #545454
-
-        focused_workspace  #3555D0 #3555D0 #D7DFFC
-        active_workspace   #333333 #5f676a #ffffff
-        inactive_workspace #2B3539 #2B3539 #919AA8
-        urgent_workspace   #ffb52a #ffb52a #192328
-    }
-#        status_command i3blocks -c ~/.config/i3/i3blocks.conf
-        i3bar_command i3bar
-        position bottom
-#        separator_symbol "//"
-        workspace_buttons yes
-#        mode hide
-#        hidden_state show
-#        modifier $mod
-#        status_command i3status
-        status_command i3pystatus -c ~/.config/i3/i3pystatus.py
-#        status_command i3status-rs ~/.config/i3/status.toml
-        font xft:Roboto, FontAwesome 9
-}
-
 # Autostart applications
-#exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
 exec --no-startup-id compton -b --config ~/.config/compton-i3.conf
 exec --no-startup-id nitrogen --restore
 #exec --no-startup-id feh --bg-scale feh --bg-scale /home/lubomir/.backgrounds/milky_way_stars-1920x1080.jpg
 exec --no-startup-id start-pulseaudio-x11
-exec --no-startup-id volumeicon
+#exec --no-startup-id volumeicon
 exec --no-startup-id gnome-settings-daemon
 #exec --no-startup-id pamac-tray
 #exec --no-startup-id hp-systray
 exec_always --no-startup-id numlockx on
 exec --no-startup-id setxkbmap -layout "us,sk(qwerty),cz(qwerty)" -option grp:alt_shift_toggle
-exec --no-startup-id gxkb
-exec --no-startup-id clipit
-exec --no-startup-id nm-applet
+#exec --no-startup-id gxkb
+#exec --no-startup-id clipit
+#exec --no-startup-id nm-applet
 exec --no-startup-id pulseaudio -k
 exec --no-startup-id redshift -l 49:18
 exec --no-startup-id sh /home/lubomir/.scripts/conky-startup.sh
@@ -380,9 +344,9 @@ gaps outer 0
 # Smart gaps (gaps used if only more than one container on the workspace)
 smart_gaps on
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-#smart_borders on
+smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner

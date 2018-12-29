@@ -17,7 +17,7 @@ font pango:Noto Sans bold 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+#font pango:Roboto bold 9
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -61,37 +61,38 @@ client.background       #ffffff
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id i3-sensible-terminal;exec --no-startup-id paplay ~/.sounds/map.oga
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+q kill;exec --no-startup-id paplay ~/.sounds/map.oga
+bindsym $mod+q kill
 
 # workspace_auto_back_and_forth yes|no
 workspace_auto_back_and_forth yes
-bindsym $mod+Tab workspace back_and_forth;exec --no-startup-id paplay ~/.sounds/tile.oga
+bindsym $mod+Tab workspace back_and_forth
 
 # Start Applications
-bindsym $mod+F1 exec thunar;exec --no-startup-id paplay ~/.sounds/map.oga
-bindsym $mod+F2 exec firefox;exec --no-startup-id paplay ~/.sounds/map.oga
-bindsym $mod+Shift+F2 exec firefox -private-window;exec --no-startup-id paplay ~/.sounds/map.oga
-#bindsym $mod+F2 exec --no-startup-id google-chrome-stable;exec --no-startup-id paplay ~/.sounds/map.oga
-bindsym $mod+F3 exec thunderbird;exec --no-startup-id paplay ~/.sounds/map.oga
+bindsym $mod+F1 exec thunar
+bindsym $mod+F2 exec firefox
+bindsym $mod+Shift+F2 exec firefox -private-window
+#bindsym $mod+F2 exec --no-startup-id google-chrome-stable
+bindsym $mod+F3 exec thunderbird
 #bindsym $mod+c exec --no-startup-id "rofi -modi window,drun, -show drun -font 'hack 11' -show -columns 2"
-bindsym $mod+c exec --no-startup-id rofi -show drun -show-icons -drun-icon-theme Vibrancy-Full-Dark-Aqua;exec --no-startup-id paplay ~/.sounds/map.oga
-bindsym $mod+Shift+f exec --no-startup-id rofi  -show find -modi find:~/.scripts/finder.sh;exec --no-startup-id paplay ~/.sounds/map.oga
-# bindsym $mod+F4 exec ranger;exec --no-startup-id paplay ~/.sounds/map.oga
-bindsym $mod+Shift+F3 exec gksu geany;exec --no-startup-id paplay ~/.sounds/map.oga
-bindsym $mod+F5 exec urxvt -e 'htop';exec --no-startup-id paplay ~/.sounds/map.oga
-bindsym $mod+g exec geany;exec --no-startup-id paplay ~/.sounds/map.oga
-bindsym $mod+n exec urxvt -e ncmpcpp;exec --no-startup-id paplay ~/.sounds/map.oga
-bindsym $mod+m exec smplayer;exec --no-startup-id paplay ~/.sounds/map.oga
+bindsym $mod+c exec --no-startup-id rofi -show drun
+#bindsym $mod+c exec --no-startup-id rofi -show drun -show-icons -drun-icon-theme Vibrancy-Full-Dark-Aqua
+bindsym $mod+Shift+f exec --no-startup-id rofi  -show find -modi find:~/.scripts/finder.sh
+# bindsym $mod+F4 exec ranger
+bindsym $mod+Shift+F3 exec gksu geany
+bindsym $mod+F5 exec urxvt -e 'htop'
+bindsym $mod+g exec subl
+bindsym $mod+n exec urxvt -e ncmpcpp
+bindsym $mod+m exec smplayer
 #bindsym $mod+b exec --no-startup-id sh /home/lubomir/.scripts/networkmanager_dmenu.sh
-bindsym $mod+t exec --no-startup-id pkill compton;exec --no-startup-id notify-send 'Compton OFF';exec --no-startup-id paplay ~/.sounds/map.oga
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b --config ~/.config/compton-i3.conf;exec --no-startup-id notify-send 'Compton ON';exec --no-startup-id paplay ~/.sounds/map.oga
-bindsym $mod+Shift+d --release exec --no-startup-id "killall dunst; exec notify-send 'restart dunst'";exec --no-startup-id paplay ~/.sounds/logout.ogg
-bindsym Print exec --no-startup-id scrot;exec --no-startup-id paplay ~/.sounds/map.oga
-bindsym $mod+Print --release exec --no-startup-id scrot -w;exec --no-startup-id paplay ~/.sounds/map.oga
-bindsym $mod+Shift+Print --release exec --no-startup-id scrot -d 8;exec --no-startup-id paplay ~/.sounds/map.oga
+bindsym $mod+t exec --no-startup-id pkill compton;exec --no-startup-id notify-send 'Compton OFF'
+bindsym $mod+Ctrl+t exec --no-startup-id compton -b --config ~/.config/compton-i3.conf;exec --no-startup-id notify-send 'Compton ON'
+bindsym $mod+Shift+d --release exec --no-startup-id "killall dunst; exec notify-send 'restart dunst'"
+bindsym Print exec --no-startup-id scrot
+bindsym $mod+Print --release exec --no-startup-id scrot -w
+bindsym $mod+Shift+Print --release exec --no-startup-id scrot -d 8
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # start dmenu (a program launcher)
@@ -110,10 +111,10 @@ bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left;exec --no-startup-id paplay ~/.sounds/tile.oga
-bindsym $mod+Down focus down;exec --no-startup-id paplay ~/.sounds/tile.oga
-bindsym $mod+Up focus up;exec --no-startup-id paplay ~/.sounds/tile.oga
-bindsym $mod+Right focus right;exec --no-startup-id paplay ~/.sounds/tile.oga
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+j move left
@@ -128,12 +129,12 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split orientation
-bindsym $mod+b split h;exec --no-startup-id notify-send 'tile horizontally';exec --no-startup-id paplay ~/.sounds/logout.ogg
-bindsym $mod+v split v;exec --no-startup-id notify-send 'tile vertically';exec --no-startup-id paplay ~/.sounds/logout.ogg
-bindsym $mod+x split toggle;exec --no-startup-id notify-send 'tile changed';exec --no-startup-id paplay ~/.sounds/logout.ogg
+bindsym $mod+b split h;exec --no-startup-id notify-send 'tile horizontally'
+bindsym $mod+v split v;exec --no-startup-id notify-send 'tile vertically'
+bindsym $mod+x split toggle;exec --no-startup-id notify-send 'tile changed'
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle;exec --no-startup-id paplay ~/.sounds/maximize.oga
+bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+s layout stacking
@@ -141,10 +142,9 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-#bindsym $mod+Shift+space floating toggle;exec --no-startup-id paplay ~/.sounds/tile.oga
-#bindsym $mod+s floating toggle;exec --no-startup-id paplay ~/.sounds/tile.oga
-bindsym $mod+s floating toggle resize set 1200 800;exec --no-startup-id paplay ~/.sounds/tile.oga
-bindsym $mod+Shift+s move position center;exec --no-startup-id paplay ~/.sounds/tile.oga
+#bindsym $mod+Shift+space floating toggle
+#bindsym $mod+s floating toggle
+bindsym $mod+s floating toggle resize set 1200 800; move position center
 
 # Toggle between dock mode and hide mode
 bindsym $mod+h bar mode toggle
@@ -159,9 +159,9 @@ bindsym $mod+a focus parent
 bindsym $mod+d focus child
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+1;exec --no-startup-id paplay ~/.sounds/tile.oga
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+1;exec --no-startup-id paplay ~/.sounds/tile.oga
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -RTMIN+1;exec --no-startup-id paplay ~/.sounds/tile.oga
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+1
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+1
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -RTMIN+1
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -181,15 +181,15 @@ set $ws8 "8"
 set $ws9 "9"
 
 # POLYBAR setings
-bindsym $mod+1 workspace $ws1;exec --no-startup-id paplay ~/.sounds/tile.oga
-bindsym $mod+2 workspace $ws2;exec --no-startup-id paplay ~/.sounds/tile.oga
-bindsym $mod+3 workspace $ws3;exec --no-startup-id paplay ~/.sounds/tile.oga
-bindsym $mod+4 workspace $ws4;exec --no-startup-id paplay ~/.sounds/tile.oga
-bindsym $mod+5 workspace $ws5;exec --no-startup-id paplay ~/.sounds/tile.oga
-bindsym $mod+6 workspace $ws6;exec --no-startup-id paplay ~/.sounds/tile.oga
-bindsym $mod+7 workspace $ws7;exec --no-startup-id paplay ~/.sounds/tile.oga
-bindsym $mod+8 workspace $ws8;exec --no-startup-id paplay ~/.sounds/tile.oga
-bindsym $mod+9 workspace $ws9;exec --no-startup-id paplay ~/.sounds/tile.oga
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
 
 # move focused container to workspace POLYBAR
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -221,11 +221,13 @@ for_window [class="SuperTuxKart"] floating disable border pixel 2
 #for_window [class="OpenArena"] floating enable border pixel 2
 for_window [class="Imagewriter"] floating enable border normal
 for_window [class="vlc"] floating enable border normal 2
+for_window [class="smplayer"] floating enable;move position center border pixel 2
 for_window [class="SimpleScreenRecorder"] floating enable border normal 2
 for_window [class="Transmission-gtk"] floating disable border pixel 2
 for_window [class="Viewnior"] floating enable border normal 2
 for_window [class="Ristretto"] floating enable border normal 2
 for_window [class="Gpicview"] floating enable border normal 2
+for_window [class="Gpick"] floating enable border normal 2
 for_window [class="feh"] floating enable border normal 2
 for_window [class="Gedit"] floating enable border normal 2
 for_window [class="GParted"] floating enable border normal 2
@@ -256,7 +258,7 @@ bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed 
 
 # Set shut down, restart and locking features
 bindsym $mod+i exec --no-startup-id "sh /home/lubomir/.config/lock.sh && sleep 1"
-bindsym $mod+0 mode "$mode_system";exec --no-startup-id paplay ~/.sounds/minimize.oga
+bindsym $mod+0 mode "$mode_system"
 set $Locker sh /home/lubomir/.config/lock.sh && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
@@ -343,7 +345,7 @@ smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-#smart_borders on
+smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner

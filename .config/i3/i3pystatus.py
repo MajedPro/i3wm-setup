@@ -3,12 +3,13 @@
 import subprocess
 import os
 import os.path
-
+import requests
 
 from i3pystatus import Status, IntervalModule
 from i3pystatus.core.command import run_through_shell
 from i3pystatus.updates import pacman, cower
 from i3pystatus.mail import imap
+
 
 #from i3pystatus.mail import imap
 
@@ -66,17 +67,21 @@ status.register("network",
     format_down = "",
     on_leftclick = "networkmanager_dmenu",)
 
+#status.register("net_speed",
+#    hints = {"separator": True, "separator_block_width": 15},
+#    format = "↓{speed_down:.1f}{down_units} ↑{speed_up:.1f}{up_units}",)
+##    format = "↓{speed_down:.1f}{down_units} ↑{speed_up:.1f}{up_units} ({hosting_provider})",)
+
 status.register("load",
     hints = {"separator": True, "separator_block_width": 15},
-    color = "#AEAEAE",
-    format = "  {avg1}  tasks:  {tasks}",
-    on_leftclick = "urxvt -hold -e glances",)
+    color = "#B0B0B0",
+    interval = 300,
+    format = "  {avg1}  tasks:  {tasks}",)
 
 status.register("cpu_usage",
     hints = {"separator": True, "separator_block_width": 15},
 #    format=": {usage_cpu0:02}% {usage_cpu1:02}% {usage_cpu2:02}% {usage_cpu3:02}%",
-    format = "  {usage:03}%",
-    on_leftclick = "urxvt -hold -e glances",)
+    format = "  {usage:03}%",)
 
 status.register("temp",
     hints = {"separator": True, "separator_block_width": 15},
@@ -84,8 +89,7 @@ status.register("temp",
     alert_temp = 60,
     color = "#FFDB98",
     alert_color = "#FF3B3B",
-    format = "  {temp:.0f} °C",
-    on_leftclick = "urxvt -hold -e glances",)
+    format = "  {temp:.0f} °C",)
 
 status.register("mem",
     hints = {"separator": True, "separator_block_width": 15},
@@ -93,14 +97,13 @@ status.register("mem",
     warn_color = "#E5E500",
     alert_color = "#FF1919",
     format = "  {used_mem:.0f} MiB",
-    on_leftclick = "urxvt -hold -e glances",)
+    on_leftclick = "urxvt -e htop",)
 
 status.register("disk",
     hints = {"separator": True, "separator_block_width": 15},
     path = "/",
     color = "#FFACAC",
-    format = "  {avail} GB",
-    on_leftclick = "urxvt -hold -e glances",)
+    format = "  {avail} GB",)
 
 status.register("disk",
     hints = {"separator": True, "separator_block_width": 15},
@@ -111,21 +114,24 @@ status.register("disk",
 status.register("uname",
     hints = {"separator": True, "separator_block_width": 15},
     format = "  {sysname}",
-    on_leftclick = "urxvt -hold -e inxi",)
+    on_leftclick = "sh ~/.scripts/i3pystatus/urxvt-uname.sh",)
 
 status.register("updates",
     hints = {"separator": True, "separator_block_width": 15},
     color = "#FF8181",
     color_no_updates = "#6E6E6E",
-    format = "  {count}",
+    format = "  updates  {count}",
     format_no_updates = "",
-    on_leftclick="urxvt -hold -e yaourt -Syu --aur",
+    format_working = "",
+    interval = 30,
+    on_leftclick = "sh ~/.scripts/i3pystatus/urxvt-updates.sh",
     backends = [pacman.Pacman(), cower.Cower()],)
 
 status.register("mail",
     hints = {"separator": True, "separator_block_width": 15},
-    color_unread="#FFFF00",
+    color_unread = "#FF2D2D",
     format_plural = "{unread} new emails",
+    on_leftclick = "firefox -new-window https://mail.google.com/mail/u/1/#inbox",
     backends=[
         imap.IMAP(
              # port and ssl are the defaults
@@ -137,19 +143,19 @@ status.register("mail",
 status.register("uptime",
     hints = {"separator": True, "separator_block_width": 15},
     color = "#FFE5B5",
-    interval=5,
-    format="  {days} days {hours}:{mins}",)
+    interval = 5,
+    format = "  {days}d  {hours}h  {mins}m",)
 
-status.register("mpd",
-    hints = {"separator": True, "separator_block_width": 15},
-    color = "#7F7F7F",
-    format = "{album}   {status}   {title}",
-    on_rightclick = ["mpd_command", "stop"],
-    status = {
-        "pause": "",
-        "play": "",
-        "stop": "",
-    },)
+#status.register("mpd",
+#    hints = {"separator": True, "separator_block_width": 15},
+#    color = "#7F7F7F",
+#    format = "{album}   {status}   {title}",
+#    on_rightclick = ["mpd_command", "stop"],
+#    status = {
+#        "pause": "",
+#        "play": "",
+#        "stop": "",
+#    },)
 
 status.register(RestartReminder())
 
