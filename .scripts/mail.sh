@@ -1,4 +1,4 @@
-USER=lubomir.pecena@gmail.com
+USER=username@gmail.com
 PASS=passwd
  
 COUNT=`curl -su $USER:$PASS https://mail.google.com/mail/feed/atom || echo "<fullcount>unknown number of</fullcount>"`

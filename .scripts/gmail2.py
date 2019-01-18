@@ -6,7 +6,7 @@ import sys, imaplib
 port = 993
 server = 'imap.gmail.com'
 
-username = 'lluboopecienka@gmail.com'
+username = 'username@gmail.com'
 passwd = 'passwd'
 
 imap_server = imaplib.IMAP4_SSL(server, port)
