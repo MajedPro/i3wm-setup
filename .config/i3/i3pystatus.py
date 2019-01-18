@@ -11,10 +11,6 @@ from i3pystatus.updates import pacman, cower
 from i3pystatus.mail import imap
 
 
-#from i3pystatus.mail import imap
-
-#from i3pystatus.updates import pacman, cower
-
 class RestartReminder(IntervalModule):
     settings = required = ()
 
@@ -23,7 +19,7 @@ class RestartReminder(IntervalModule):
             self.output = None
         else:
             self.output = {
-                "full_text": ": ",
+                "full_text": "  ",
                 "color": "#FF5353",
             }
 
@@ -35,18 +31,29 @@ status = Status(
 
 status.register("text",
     hints = {"separator": True, "separator_block_width": 15},
-    text = ",",
-    color = "#222222")
+    text = "",
+    color = "#808080",)
+
+# status.register("keyboard_locks",
+#     hints = {"separator": True, "separator_block_width": 15},
+#     format = "{caps}",
+#     caps_on = "CAP",
+#     caps_off = "___",
+#     num_on = "NUM",
+#     num_off = "___",
+#     scroll_on = "SCR",
+#     scroll_off = "___",
+#     color = "#FF1C1A",)
 
 status.register("clock",
     hints = {"separator": True, "separator_block_width": 15},
     color = "#FFFFFF",
-    format = "  %H:%M:%S",
+    format = "  %H:%M",
     interval = 1,)
 
 status.register("clock",
     hints = {"separator": True, "separator_block_width": 15},
-    color = "#BDCAFF",
+    color = "#A5B7FF",
     format = "  %a %-d %b",
     interval = 5,
     on_leftclick = "/usr/bin/gsimplecal",)
@@ -61,11 +68,27 @@ status.register("pulseaudio",
 status.register("network",
     hints = {"separator": True, "separator_block_width": 15},
     interface = "enp2s0",
-    color_up = "#8AFB8A",
-    color_down = "#C53232",
+    color_up = "#1EDC04",
+    color_down = "#FF0000",
     format_up = "  {v4}",
-    format_down = "",
+    format_down = "  disconnected",
     on_leftclick = "networkmanager_dmenu",)
+
+status.register("external_ip",
+    hints = {"separator": True, "separator_block_width": 15},
+#    format = "{country_name} {country_code} {ip}",
+    format = "ip: {ip}",
+    format_hide = "{country_code}",
+    format_down = "Timeout",
+
+    ip_website = "https://api.ipify.org",
+    timeout = 5,
+    color = "#FFFFFF",
+    color_hide = "#FFC600",
+    color_down = "#FF0000",
+
+    on_leftclick = "switch_hide",
+    on_rightclick = "run",)
 
 #status.register("net_speed",
 #    hints = {"separator": True, "separator_block_width": 15},
@@ -76,12 +99,29 @@ status.register("load",
     hints = {"separator": True, "separator_block_width": 15},
     color = "#B0B0B0",
     interval = 300,
-    format = "  {avg1}  tasks:  {tasks}",)
+    format = "  {avg1}  tasks: {tasks}",)
 
 status.register("cpu_usage",
     hints = {"separator": True, "separator_block_width": 15},
 #    format=": {usage_cpu0:02}% {usage_cpu1:02}% {usage_cpu2:02}% {usage_cpu3:02}%",
-    format = "  {usage:03}%",)
+#    format = "  {usage:03}%",
+    color = "#15FF00",
+    format = "CPU: {usage:02}%",)
+
+# status.register("cpu_usage_graph",
+#     hints = {"separator": True, "separator_block_width": 15},
+#     graph_width = 15,
+#     graph_style = 'blocks',
+#     format = '{cpu_graph}',
+#     cpu = 'usage_cpu',
+#     direction = 'left-to-right',)
+
+# status.register("cpu_usage_bar",
+#     hints = {"separator": True, "separator_block_width": 15},
+#     format = "CPU  {usage_bar}",
+#     color = "#FFC550",
+#     bar_type = "horizontal",
+#     cpu = 'usage_cpu',)
 
 status.register("temp",
     hints = {"separator": True, "separator_block_width": 15},
@@ -99,10 +139,19 @@ status.register("mem",
     format = "  {used_mem:.0f} MiB",
     on_leftclick = "urxvt -e htop",)
 
+# status.register("mem_bar",
+#     hints = {"separator": True, "separator_block_width": 15},
+#     color = "#00FF00",
+#     warn_color = "#FFFF00",
+#     alert_color = "#FF0000",
+#     warn_percentage = 50,
+#     alert_percentage = 80,
+#     multi_colors = False,)
+
 status.register("disk",
     hints = {"separator": True, "separator_block_width": 15},
     path = "/",
-    color = "#FFACAC",
+    color = "#FF7D7D",
     format = "  {avail} GB",)
 
 status.register("disk",
@@ -124,14 +173,14 @@ status.register("updates",
     format_no_updates = "",
     format_working = "",
     interval = 30,
-    on_leftclick = "sh ~/.scripts/i3pystatus/urxvt-updates.sh",
+    on_leftclick = "sh ~/.scripts/updates-install.sh",
     backends = [pacman.Pacman(), cower.Cower()],)
 
 status.register("mail",
     hints = {"separator": True, "separator_block_width": 15},
-    color_unread = "#FF2D2D",
+    color_unread = "#FF3F3F",
     format_plural = "{unread} new emails",
-    on_leftclick = "firefox -new-window https://mail.google.com/mail/u/1/#inbox",
+#    on_leftclick = "firefox -new-window https://mail.google.com/mail/u/1/#inbox",
     backends=[
         imap.IMAP(
              # port and ssl are the defaults
@@ -140,53 +189,21 @@ status.register("mail",
             )
     ])
 
+# status.register("redshift",
+#     hints = {"separator": True, "separator_block_width": 15},
+#     color = "#9AAEFF",
+#     error_color = "#FF2F2F",
+#     format = "{inhibit} {temperature}K",
+#     format_inhibit = ["On", "Off"],
+#     on_leftclick = "toggle_inhibit",
+#     redshift_parameters = [],)
+
 status.register("uptime",
     hints = {"separator": True, "separator_block_width": 15},
-    color = "#FFE5B5",
+    color = "#ABBCFF",
     interval = 5,
-    format = "  {days}d  {hours}h  {mins}m",)
-
-#status.register("mpd",
-#    hints = {"separator": True, "separator_block_width": 15},
-#    color = "#7F7F7F",
-#    format = "{album}   {status}   {title}",
-#    on_rightclick = ["mpd_command", "stop"],
-#    status = {
-#        "pause": "",
-#        "play": "",
-#        "stop": "",
-#    },)
+    format = "  {days}d {hours}h {mins}m",)
 
 status.register(RestartReminder())
-
-# To use the below, first invoke ssh -N -T -L 11111:the-santos-lab.auburn.edu:993 AU_Gate
-
-#status.register("mail",
-#    email_client="/usr/local/bin/mutt",
-#    format=": {unread}",
-#    format_plural=": {unread}",
-#    color_unread="#00FFFF",
-#    backends=[
-#        imap.IMAP(
-             # port and ssl are the defaults
-#             host="localhost", port=11111, username="srsantos", password="XXXXXXXXXXXX"
-#            )
-#])
-
-# status.register("mpd",
-    # hints = {"separator": True, "separator_block_width": 15},
-    # host='localhost',
-    # port='6600',
-    # format="MPD:  {status}",
-    # on_leftclick="switch_playpause",
-    # on_rightclick=["mpd_command", "stop"],
-    # on_middleclick=["mpd_command", "shuffle"],
-    # on_upscroll=["mpd_command", "next_song"],
-    # on_downscroll=["mpd_command", "previous_song"],
-    # status={
-        # "pause": " ",
-        # "play": " ",
-        # "stop": " ",
-    # },)
 
 status.run()

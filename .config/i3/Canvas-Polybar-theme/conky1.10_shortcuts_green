@@ -1,14 +1,14 @@
 conky.config = {
 	alignment = 'bottom_left',
 	background = true,
-	color2 = '#9BAEFA',
-	color3 = '#9BAEFA',
+	color2 = '#6F7FBB',
+	color3 = '#6F7FBB',
 	cpu_avg_samples = 2,
-	default_color = '#C9C9C9',
+	default_color = '#7B7B7B',
 	double_buffer = true,
 	font = 'Bitstream Vera Sans:size=8',
 	gap_x = 25,
-	gap_y = 25,
+	gap_y = 46,
 	minimum_width = 200,
 	no_buffers = true,
 	own_window = true,
@@ -18,6 +18,18 @@ conky.config = {
 	use_xft = true,
 }
 conky.text = [[
+${voffset 4}${color3}${font Bitstream Vera Sans:bold:size=8}Menu${font Bitstream Vera Sans:size=8}
+${voffset 8}${color2}rofi menu - ${color}mod+c
+${color2}morc_menu - ${color}mod+z
+
+${voffset 4}${color3}${font Bitstream Vera Sans:bold:size=8}Programs${font Bitstream Vera Sans:size=8}
+${voffset 8}${color2}thunar - ${color}mod+F1
+${color2}firefox - ${color}mod+F2
+${color2}email client - ${color}mod+F3
+${color2}text editor - ${color}mod+g
+${color2}ncmpcpp - ${color}mod+n
+${color2}smplayer - ${color}mod+m
+
 ${color3}${font Bitstream Vera Sans:bold:size=8}Windows operations${font Bitstream Vera Sans:size=8}
 ${voffset 8}${color2}open new terminal - ${color}mod+Enter
 ${color2}kill focused - ${color}mod+q
@@ -31,10 +43,6 @@ ${voffset 4}${color3}${font Bitstream Vera Sans:bold:size=8}Workspaces operation
 ${voffset 8}${color2}switch to workspace 1-8 - ${color}mod+1-9
 ${color2}send to workspace 1-9 - ${color}mod+Shift+1-9
 ${color2}switch two last workspaces - ${color}mod+Tab
-
-${voffset 4}${color3}${font Bitstream Vera Sans:bold:size=8}Menu${font Bitstream Vera Sans:size=8}
-${voffset 8}${color2}rofi menu - ${color}mod+c
-${color2}morc_menu - ${color}mod+z
 
 ${color2}exit - ${color}mod+0
 

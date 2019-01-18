@@ -18,6 +18,18 @@ conky.config = {
 	use_xft = true,
 }
 conky.text = [[
+${voffset 4}${color3}${font Bitstream Vera Sans:bold:size=8}Menu${font Bitstream Vera Sans:size=8}
+${voffset 8}${color2}rofi menu - ${color}mod+c
+${color2}morc_menu - ${color}mod+z
+
+${voffset 4}${color3}${font Bitstream Vera Sans:bold:size=8}Programs${font Bitstream Vera Sans:size=8}
+${voffset 8}${color2}thunar - ${color}mod+F1
+${color2}firefox - ${color}mod+F2
+${color2}email client - ${color}mod+F3
+${color2}text editor - ${color}mod+g
+${color2}ncmpcpp - ${color}mod+n
+${color2}smplayer - ${color}mod+m
+
 ${color3}${font Bitstream Vera Sans:bold:size=8}Windows operations${font Bitstream Vera Sans:size=8}
 ${voffset 8}${color2}open new terminal - ${color}mod+Enter
 ${color2}kill focused - ${color}mod+q
@@ -31,10 +43,6 @@ ${voffset 4}${color3}${font Bitstream Vera Sans:bold:size=8}Workspaces operation
 ${voffset 8}${color2}switch to workspace 1-8 - ${color}mod+1-9
 ${color2}send to workspace 1-9 - ${color}mod+Shift+1-9
 ${color2}switch two last workspaces - ${color}mod+Tab
-
-${voffset 4}${color3}${font Bitstream Vera Sans:bold:size=8}Menu${font Bitstream Vera Sans:size=8}
-${voffset 8}${color2}rofi menu - ${color}mod+c
-${color2}morc_menu - ${color}mod+z
 
 ${color2}exit - ${color}mod+0
 

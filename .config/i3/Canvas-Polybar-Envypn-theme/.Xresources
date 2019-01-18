@@ -55,7 +55,7 @@ rofi.fullscreen:        true
 *color11:                         #FFA500
 
 !! blue dark/light
-*color4:                          #303E61
+*color4:                          #2C3854
 *color12:                         #507CEF
 
 !! magenta dark/light
@@ -83,6 +83,7 @@ URxvt.font:                       9x15
 URxvt.geometry:                   130x30
 URxvt.font:                       xft:Iosevka:size=10
 !URxvt.font:                       xft:ypn envypn:size=12
+!URxvt.internalBorder:             20
 
 ! alternative font settings with 'terminus':
 !URxvt.font:      -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
@@ -90,7 +91,7 @@ URxvt.font:                       xft:Iosevka:size=10
 !! terminus names see end of file!
 
 URxvt.depth:                      32
-URxvt.background:                 [90]#1C1C1C
+URxvt.background:                 [95]#1C1C1C
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true

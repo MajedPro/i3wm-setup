@@ -3,7 +3,7 @@ name = "slick"
 [theme.overrides]
 info_bg = "#268BD2"
 info_fg = "#232c31"
-idle_bg = "#073642"
+idle_bg = "#1C1C1C"
 idle_fg = "#abcdef"
 good_bg = "#859900"
 good_fg = "#232c31"

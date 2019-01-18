@@ -49,9 +49,10 @@ bindsym $mod+y border pixel 1
 #bindsym $mod+n border normal
 
 ## class                 border  backgr. text    indicator child_border
-client.focused          #8DA4FF #5D7DFB #ffffff #74A5FF   #5D7DFB
-client.focused_inactive #717171 #505050 #888888 #505050   #505050
-client.unfocused        #717171 #505050 #888888 #505050   #505050
+#client.focused          #8DA4FF #5D7DFB #ffffff #74A5FF   #5D7DFB
+client.focused          #8B8B8B #797979 #ffffff #D7D7D7   #797979
+client.focused_inactive #464646 #3D3D3D #888888 #3D3D3D   #3D3D3D
+client.unfocused        #464646 #3D3D3D #888888 #3D3D3D   #3D3D3D
 client.urgent           #FFD380 #ffb52a #ffffff #ffb52a   #ffb52a
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
@@ -77,7 +78,7 @@ bindsym $mod+Shift+F2 exec firefox -private-window
 #bindsym $mod+F2 exec --no-startup-id google-chrome-stable
 bindsym $mod+F3 exec thunderbird
 #bindsym $mod+c exec --no-startup-id "rofi -modi window,drun, -show drun -font 'hack 11' -show -columns 2"
-bindsym $mod+c exec --no-startup-id rofi -show drun
+bindsym $mod+c exec --no-startup-id rofi -show drun -show-icons -drun-icon-theme Newaita-holidays-dark
 #bindsym $mod+c exec --no-startup-id rofi -show drun -show-icons -drun-icon-theme Vibrancy-Full-Dark-Aqua
 bindsym $mod+Shift+f exec --no-startup-id rofi  -show find -modi find:~/.scripts/finder.sh
 # bindsym $mod+F4 exec ranger
@@ -229,7 +230,7 @@ for_window [class="Ristretto"] floating enable border normal 2
 for_window [class="Gpicview"] floating enable border normal 2
 for_window [class="Gpick"] floating enable border normal 2
 for_window [class="feh"] floating enable border normal 2
-for_window [class="Gedit"] floating enable border normal 2
+#for_window [class="Gedit"] floating enable border normal 2
 for_window [class="GParted"] floating enable border normal 2
 for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Lxappearance"] floating enable sticky enable border normal 2
@@ -304,7 +305,11 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Autostart applications
-exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
+
+#exec_always --no-startup-id polybar -c ~/.config/polybar/top top &
+#exec_always --no-startup-id polybar -c ~/.config/polybar/bottom  bottom &
+
+exec_always --no-startup-id sh $HOME/.config/polybar/launch2.sh
 exec --no-startup-id compton -b --config ~/.config/compton-i3.conf
 exec --no-startup-id nitrogen --restore
 #exec --no-startup-id feh --bg-scale feh --bg-scale /home/lubomir/.backgrounds/milky_way_stars-1920x1080.jpg
@@ -332,7 +337,7 @@ exec --no-startup-id xset -dpms s off
 #############################
 
 # Set inner/outer gaps
-gaps inner 10
+gaps inner 20
 gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
@@ -345,7 +350,7 @@ smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+#smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner

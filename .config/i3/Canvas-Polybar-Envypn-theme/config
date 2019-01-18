@@ -76,17 +76,18 @@ bindsym $mod+F1 exec thunar
 bindsym $mod+F2 exec firefox
 bindsym $mod+Shift+F2 exec firefox -private-window
 #bindsym $mod+F2 exec --no-startup-id google-chrome-stable
-bindsym $mod+F3 exec thunderbird
+bindsym $mod+F3 exec mousepad
 #bindsym $mod+c exec --no-startup-id "rofi -modi window,drun, -show drun -font 'hack 11' -show -columns 2"
 #bindsym $mod+c exec --no-startup-id rofi -show drun
 bindsym $mod+c exec --no-startup-id rofi -show drun -show-icons -drun-icon-theme Newaita-holidays-dark
-bindsym $mod+Shift+f exec --no-startup-id rofi  -show find -modi find:~/.scripts/finder.sh
+bindsym $mod+Shift+f exec --no-startup-id rofi -show find -modi find:~/.scripts/finder.sh
 # bindsym $mod+F4 exec ranger
 bindsym $mod+Shift+F3 exec gksu geany
 bindsym $mod+F5 exec urxvt -e htop
 bindsym $mod+g exec subl
 bindsym $mod+n exec urxvt -e ncmpcpp
 bindsym $mod+m exec smplayer
+bindsym $mod+w exec lowriter
 #bindsym $mod+b exec --no-startup-id sh /home/lubomir/.scripts/networkmanager_dmenu.sh
 bindsym $mod+t exec --no-startup-id pkill compton;exec --no-startup-id notify-send 'Compton OFF'
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b --config ~/.config/compton-i3.conf;exec --no-startup-id notify-send 'Compton ON'
@@ -139,7 +140,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+#bindsym $mod+w layout tabbedwf
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -269,7 +270,7 @@ mode "$mode_system" {
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -308,7 +309,7 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
 exec --no-startup-id compton -b --config ~/.config/compton-i3.conf
 exec --no-startup-id nitrogen --restore
-#exec --no-startup-id feh --bg-scale feh --bg-scale /home/lubomir/.backgrounds/milky_way_stars-1920x1080.jpg
+#exec --no-startup-id feh --bg-fill ~/Pictures/backgrounds/Dark.jpg
 exec --no-startup-id start-pulseaudio-x11
 #exec --no-startup-id volumeicon
 exec --no-startup-id gnome-settings-daemon
@@ -320,10 +321,12 @@ exec --no-startup-id setxkbmap -layout "us,sk(qwerty),cz(qwerty)" -option grp:al
 #exec --no-startup-id clipit
 #exec --no-startup-id nm-applet
 exec --no-startup-id pulseaudio -k
+#exec --no-startup-id ~/.scripts/alternating_layouts.py
 exec --no-startup-id redshift -l 49:18
 exec --no-startup-id sh /home/lubomir/.scripts/conky-startup.sh
 #exec --no-startup-id xautolock -time 15 -locker 'sh /home/lubomir/.config/lock.sh'
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec_always --no-startup-id sh ~/.scripts/read.sh
 
 ## Vypnutie vypinania monitoru
 exec --no-startup-id xset -dpms s off
@@ -333,7 +336,7 @@ exec --no-startup-id xset -dpms s off
 #############################
 
 # Set inner/outer gaps
-gaps inner 10
+gaps inner 20
 gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
@@ -344,7 +347,7 @@ gaps outer 0
 # Smart gaps (gaps used if only more than one container on the workspace)
 smart_gaps on
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
 
