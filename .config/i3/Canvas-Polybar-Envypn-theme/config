@@ -13,7 +13,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Noto Sans bold 9
+font pango:Noto Sans bold 8
+#font pango:xos4 Terminus 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -46,10 +47,11 @@ hide_edge_borders none
 # change borders
 bindsym $mod+u border pixel 4
 bindsym $mod+y border pixel 1
-#bindsym $mod+n border normal
+bindsym $mod+Shift+b border normal
+bindsym $mod+Shift+Ctrl+b border pixel 2
 
 ## class                 border  backgr. text    indicator child_border
-client.focused          #8DA4FF #5D7DFB #ffffff #74A5FF   #5D7DFB
+client.focused          #8DA4FF #5D7DFB #ffffff #86A0FF   #5D7DFB
 client.focused_inactive #717171 #505050 #888888 #505050   #505050
 client.unfocused        #717171 #505050 #888888 #505050   #505050
 client.urgent           #FFD380 #ffb52a #ffffff #ffb52a   #ffb52a
@@ -66,28 +68,32 @@ bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 # kill focused window
 bindsym $mod+q kill
 
+# Mouse middle button kill
+bindsym --release button2 kill
+
 # workspace_auto_back_and_forth yes|no
 workspace_auto_back_and_forth yes
 bindsym $mod+Tab workspace back_and_forth
 
 # Start Applications
-bindsym $mod+F1 exec thunar
-#bindsym $mod+F1 exec nautilus --new-window
+#bindsym $mod+F1 exec thunar
+bindsym $mod+F1 exec nautilus --new-window
 bindsym $mod+F2 exec firefox
 bindsym $mod+Shift+F2 exec firefox -private-window
 #bindsym $mod+F2 exec --no-startup-id google-chrome-stable
 bindsym $mod+F3 exec mousepad
 #bindsym $mod+c exec --no-startup-id "rofi -modi window,drun, -show drun -font 'hack 11' -show -columns 2"
 #bindsym $mod+c exec --no-startup-id rofi -show drun
-bindsym $mod+c exec --no-startup-id rofi -show drun -show-icons -drun-icon-theme Newaita-holidays-dark
+bindsym $mod+c exec --no-startup-id rofi -show drun -show-icons -drun-icon-theme Newaita-dark
 bindsym $mod+Shift+f exec --no-startup-id rofi -show find -modi find:~/.scripts/finder.sh
-# bindsym $mod+F4 exec ranger
+bindsym $mod+F4 exec evince
 bindsym $mod+Shift+F3 exec gksu geany
 bindsym $mod+F5 exec urxvt -e htop
 bindsym $mod+g exec subl
 bindsym $mod+n exec urxvt -e ncmpcpp
 bindsym $mod+m exec smplayer
 bindsym $mod+w exec lowriter
+bindsym $mod+Shift+a exec pavucontrol
 #bindsym $mod+b exec --no-startup-id sh /home/lubomir/.scripts/networkmanager_dmenu.sh
 bindsym $mod+t exec --no-startup-id pkill compton;exec --no-startup-id notify-send 'Compton OFF'
 bindsym $mod+Ctrl+t exec --no-startup-id compton -b --config ~/.config/compton-i3.conf;exec --no-startup-id notify-send 'Compton ON'
@@ -139,14 +145,15 @@ bindsym $mod+x split toggle;exec --no-startup-id notify-send 'tile changed'
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbedwf
+#bindsym $mod+Shift+s layout stacking
+#bindsym $mod+Shift+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 #bindsym $mod+Shift+space floating toggle
 #bindsym $mod+s floating toggle
 bindsym $mod+s floating toggle resize set 1200 800; move position center
+#bindsym $mod+s floating toggle resize set 960 700; move position center
 
 # Toggle between dock mode and hide mode
 bindsym $mod+h bar mode toggle
@@ -220,10 +227,10 @@ for_window [class="Clipgrab"] floating enable
 for_window [title="File Transfer*"] floating enable
 for_window [class="Galculator"] floating enable border normal 2
 for_window [class="SuperTuxKart"] floating disable border pixel 2
-#for_window [class="OpenArena"] floating enable border pixel 2
+#for_window [class="openarena.x86_64"] floating enable border pixel 2
 for_window [class="Imagewriter"] floating enable border normal
 for_window [class="vlc"] floating enable border normal 2
-for_window [class="smplayer"] floating enable;move position center border pixel 2
+#for_window [class="smplayer"] floating enable; move position center border pixel 2
 for_window [class="SimpleScreenRecorder"] floating enable border normal 2
 for_window [class="Transmission-gtk"] floating disable border pixel 2
 for_window [class="Viewnior"] floating enable border normal 2
@@ -231,7 +238,8 @@ for_window [class="Ristretto"] floating enable border normal 2
 for_window [class="Gpicview"] floating enable border normal 2
 for_window [class="Gpick"] floating enable border normal 2
 for_window [class="feh"] floating enable border pixel 2
-#for_window [class="Gedit"] floating enable border pixel 2
+#for_window [class="Gedit"] floating enable border normal 2
+for_window [class="GParted"] floating enable border normal 2
 for_window [class="GParted"] floating enable border normal 2
 for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Lxappearance"] floating enable sticky enable border normal 2
@@ -247,7 +255,7 @@ for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Skype"] floating enable border normal
 for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
+#for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="Xarchiver"] floating enable sticky enable border normal 2
 
@@ -259,9 +267,9 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Set shut down, restart and locking features
-bindsym $mod+i exec --no-startup-id "sh /home/lubomir/.config/lock.sh && sleep 1"
+bindsym $mod+i exec --no-startup-id "sh /home/lubomir/.config/lock.sh"
 bindsym $mod+0 mode "$mode_system"
-set $Locker sh /home/lubomir/.config/lock.sh && sleep 1
+set $Locker sh /home/lubomir/.config/lock.sh
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
@@ -307,7 +315,9 @@ bindsym $mod+r mode "resize"
 
 # Autostart applications
 exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
+#exec --no-startup-id xfce4-panel --disable-wm-check
 exec --no-startup-id compton -b --config ~/.config/compton-i3.conf
+#exec --no-startup-id compton -b --config ~/.config/compton.conf
 exec --no-startup-id nitrogen --restore
 #exec --no-startup-id feh --bg-fill ~/Pictures/backgrounds/Dark.jpg
 exec --no-startup-id start-pulseaudio-x11
@@ -322,8 +332,9 @@ exec --no-startup-id setxkbmap -layout "us,sk(qwerty),cz(qwerty)" -option grp:al
 #exec --no-startup-id nm-applet
 exec --no-startup-id pulseaudio -k
 #exec --no-startup-id ~/.scripts/alternating_layouts.py
-exec --no-startup-id redshift -l 49:18
-exec --no-startup-id sh /home/lubomir/.scripts/conky-startup.sh
+exec --no-startup-id redshift -l 48:17
+#exec --no-startup-id sh ~/.scripts/conky-startup.sh
+#exec --no-startup-id sleep 25; sh ~/.scripts/update-output.sh
 #exec --no-startup-id xautolock -time 15 -locker 'sh /home/lubomir/.config/lock.sh'
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec_always --no-startup-id sh ~/.scripts/read.sh
@@ -336,7 +347,7 @@ exec --no-startup-id xset -dpms s off
 #############################
 
 # Set inner/outer gaps
-gaps inner 20
+gaps inner 16
 gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
@@ -345,11 +356,11 @@ gaps outer 0
 # gaps outer all plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
+#smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+#smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner

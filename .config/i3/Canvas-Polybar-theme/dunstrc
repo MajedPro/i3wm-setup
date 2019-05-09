@@ -65,7 +65,7 @@
     frame_width = 1
 
     # Defines color of the frame around the notification window.
-    frame_color = "#667FEB"
+    frame_color = "#4F65C5"
 
     # Define a color for the separator.
     # possible values are:
@@ -240,14 +240,14 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#506ADD"
+    background = "#3E52A9"
     foreground = "#FFFFFF"
     timeout = 8
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#506ADD"
+    background = "#3E52A9"
     foreground = "#FFFFFF"
     timeout = 8
     # Icon for notifications with normal urgency, uncomment to enable

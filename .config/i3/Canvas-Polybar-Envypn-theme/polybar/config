@@ -11,7 +11,7 @@
 ;background = ${xrdb:color0:#222}
 ;background = #0A1214
 background = #1B1B1B
-;background = 182024
+;background = #182024
 background-alt = #444444
 ;foreground = ${xrdb:color7:#222}
 foreground = #FFFFFF
@@ -61,20 +61,21 @@ module-margin-right = 1
 separator = %{F#535353}%{F-}
 ;separator = %{F#535353}|%{F-}
 
-;font-0 = Iosevka:pixelsize=10;3
-;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-;font-2 = siji:pixelsize=9;1
-;font-3 = FontAwesome:pixelsize=9;2
-;font-4 = Monaco:pixelsize=9;2
-;font-5 = Roboto:pixelsize=9;2
-
-;;font-0 = Misc Tamsyn:pixelsize=15;2
-font-0 = ypn envypn:pixelsize=9;2
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=8.5;1
-font-3 = FontAwesome:pixelsize=8.5;3
+font-0 = Iosevka:bold:pixelsize=10;3
+;font-0 = Misc Fixed:bold:pixelsize=14;3
+font-1 = Cantarell:bold:pixelsize=10;2
+font-2 = siji:pixelsize=9;1
+font-3 = FontAwesome:pixelsize=9;2
 font-4 = Monaco:pixelsize=9;2
 font-5 = Roboto:pixelsize=9;2
+
+;;font-0 = xos4 Terminus:pixelsize=9;2
+;font-0 = ypn envypn:pixelsize=9;2
+;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+;font-2 = siji:pixelsize=8.5;1
+;font-3 = FontAwesome:pixelsize=8.5;3
+;font-4 = Monaco:pixelsize=9;2
+;font-5 = Roboto:pixelsize=9;2
 
 ;font-0 = Roboto:pixelsize=9;2
 ;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
@@ -84,7 +85,7 @@ font-5 = Roboto:pixelsize=9;2
 
 modules-left = rofi i3 bspwm
 modules-center = mpd
-modules-right = system-uptime-pretty background updates-arch gmail home filesystem memory temperature cpu pulseaudio eth xkeyboard date reload powermenu
+modules-right = system-uptime-pretty weather updates-arch gmail home filesystem memory temperature cpu pulseaudio eth xkeyboard date reload powermenu
 
 tray-position = right
 ;tray-detached = true
@@ -177,7 +178,7 @@ ws-icon-8 = 9;
 
 label-dimmed-underline = ${root.background}
 
-label-mode-padding = 2
+label-mode-padding = 1
 label-mode-font = 6
 label-mode-foreground = #202020
 label-mode-background = #ffb52a
@@ -299,6 +300,15 @@ bar-progress-fill-font = 3
 bar-progress-empty-font = 3
 bar-progress-empty-foreground = ${colors.foreground-alt}
 
+[module/weather]
+type = custom/script
+;label-padding = 2
+label-foreground = #CAFF99
+;label-background = #3555D0
+interval = 300
+exec = sh ~/.scripts/weather-i3.sh -i
+click-left = sh ~/.scripts/pocasie.sh
+
 [module/background]
 type = custom/script
 ;label-padding = 2
@@ -311,11 +321,12 @@ click-left = "feh --randomize --bg-fill ~/Pictures/backgrounds/* &"
 [module/reload]
 type = custom/script
 ;label-padding = 2
-label-foreground = #E3E3E3
+label-foreground = #777777
 ;label-background = #3555D0
 interval = 120
 exec = echo ""
 click-left = "cp ~/.config/i3/Canvas-Polybar-Envypn-theme/polybar/config ~/.config/polybar/ &"
+
 
 [module/system-uptime-pretty]
 type = custom/script
@@ -334,13 +345,15 @@ label-foreground = #E3E3E3
 exec = sh ~/.scripts/updates-arch-combined.sh
 interval = 60
 click-left = sh ~/.scripts/updates-install.sh &
+;click-right = sh ~/.scripts/update-output.sh &
 
 [module/gmail]
 type = custom/script
 label = %{F#88A0FF} %output%%{F-}
 interval = 30
 exec = ~/.scripts/gmail.py
-click-left = firefox --new-window https://mail.google.com/mail/u/1/#inbox &
+;click-left = firefox --new-window https://mail.google.com/mail/u/1/#inbox &
+click-left = thunderbird &
 
 [module/home]
 type = internal/fs
@@ -428,12 +441,12 @@ warn-temperature = 60
 
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon0/temp1_input
 
-format = <ramp><label>
+format = <label>
 ;format-overline = #f50a4d
 format-warn = <ramp> <label-warn>
 ;format-warn-overline = ${self.format-underline}
 
-label = %{F#E3E3E3} %temperature-c%%{F-}
+label = %{F#FFC345} %temperature-c%%{F-}
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
@@ -527,12 +540,12 @@ type = internal/date
 interval = 1
 
 date =
-date-alt = " %Y-%m-%d  "
+date-alt = "%{F#CCFF93} %d.%m.%Y  %{F-}"
 
 time =  %H:%M
-time-alt = %H:%M
+time-alt =  %H:%M
 
-format-prefix = 
+;format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-overline = #0a6cf5
 

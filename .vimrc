@@ -9,6 +9,7 @@ let mapleader =" "
 " Some basics:
 	set nocompatible
 	filetype plugin on
+	colo elflord
 	syntax on
 	set encoding=utf-8
 	set number

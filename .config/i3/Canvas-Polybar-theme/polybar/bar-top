@@ -316,7 +316,7 @@ label-foreground = #E3E3E3
 ;label-background = #3555D0
 interval = 120
 exec = echo ""
-click-left = "cp ~/.config/i3/Canvas-Polybar-theme/polybar/bar-* ~/.config/polybar/ &"
+click-left = "cp ~/.config/i3/Canvas-Polybar-theme/polybar/bar-* ~/.config/polybar/ && sh $HOME/.config/polybar/launch2.sh"
 
 [module/system-uptime-pretty]
 type = custom/script
@@ -342,7 +342,6 @@ type = custom/script
 label = %{F#8997D4} %output%%{F-}
 interval = 30
 exec = ~/.scripts/gmail.py
-click-left = thunderbird &
 
 [module/home]
 type = internal/fs

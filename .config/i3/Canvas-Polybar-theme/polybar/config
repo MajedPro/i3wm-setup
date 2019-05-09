@@ -27,7 +27,7 @@ height = 21
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
-fixed-center = false
+fixed-center = true
 bottom = false
 
 background = ${colors.background}
@@ -43,7 +43,7 @@ border-top-color = #FFA500
 ;border-top-color = #009BAE
 
 border-bottom-size = 0
-border-bottom-color = #5072F8
+border-bottom-color = #797979
 
 border-left-size = 0
 border-left-color = #FFA500
@@ -83,9 +83,13 @@ font-5 = Roboto:pixelsize=9;2
 ;font-3 = FontAwesome:pixelsize=9;2
 ;font-4 = ypn envypn:pixelsize=9;2
 
+;modules-left = rofi reload memory cpu temperature home filesystem system-uptime-pretty
+;modules-center = i3
+;modules-right = updates-arch gmail xkeyboard pulseaudio date powermenu
+
 modules-left = rofi i3 bspwm
 modules-center = mpd
-modules-right = system-uptime-pretty background updates-arch gmail home filesystem memory temperature cpu pulseaudio eth xkeyboard date reload powermenu
+modules-right = system-uptime-pretty weather updates-arch gmail home filesystem memory temperature cpu pulseaudio eth xkeyboard date reload powermenu
 
 tray-position = right
 ;tray-detached = true
@@ -178,7 +182,7 @@ ws-icon-8 = 9;
 
 label-dimmed-underline = ${root.background}
 
-label-mode-padding = 2
+label-mode-padding = 1
 label-mode-font = 6
 label-mode-foreground = #202020
 label-mode-background = #ffb52a
@@ -187,24 +191,24 @@ label-mode-background = #ffb52a
 
 label-focused = %name%
 label-focused-foreground = #FFFFFF
-label-focused-background = #5072F8
+label-focused-background = #797979
 ;label-focused-overline = #0CC8E0
 ;label-focused-underline = #0CC8E0
 label-focused-font = 0
 label-focused-padding = 1
 
 label-unfocused = %name%
-;label-unfocused-foreground = #f3f3f3
-label-unfocused-background = #2B3539
+label-unfocused-foreground = #898989
+label-unfocused-background = #2B2B2B
 ;label-unfocused-overline = #3f3f3f
 ;label-unfocused-underline = #3f3f3f
 label-unfocused-font = 0
 label-unfocused-padding = 1
 
 label-urgent = %name%
-label-urgent-foreground = #3B3B3B
+label-urgent-foreground = #202020
 label-urgent-background = #ffb52a
-label-urgent-overline = #ffb52a
+;label-urgent-overline = #ffb52a
 ;label-urgent-underline = #FFB52A
 label-urgent-font = 0
 label-urgent-padding = 1
@@ -216,11 +220,11 @@ label-visible-padding = 1
 
 [module/rofi]
 type = custom/script
-label-padding = 2
+label-padding = 1
 label-foreground = #FFFFFF
-label-background = #5072F8
+label-background = #797979
 interval = 120
-exec = echo ""
+exec = echo "  "
 click-left = "rofi -show drun -show-icons -drun-icon-theme Newaita-holidays-dark >/dev/null 2>&1 &"
 
 [module/jgmenu]
@@ -292,13 +296,22 @@ toggle-off-foreground = #55
 ; Only applies if <bar-progress> is used
 bar-progress-width = 20
 bar-progress-indicator = %{F#505050}%{F-}
-bar-progress-fill = %{F#527ACC}|%{F-}
+bar-progress-fill = %{F#878787}|%{F-}
 bar-progress-empty = %{F#505050}|%{F-}
 
 bar-progress-indicator-font = 3
 bar-progress-fill-font = 3
 bar-progress-empty-font = 3
 bar-progress-empty-foreground = ${colors.foreground-alt}
+
+[module/weather]
+type = custom/script
+;label-padding = 2
+label-foreground = #C1EE87
+;label-background = #3555D0
+interval = 300
+exec = sh ~/.scripts/weather-i3.sh -i
+;click-left =
 
 [module/background]
 type = custom/script
@@ -312,7 +325,7 @@ click-left = "feh --randomize --bg-fill ~/Pictures/backgrounds/* &"
 [module/reload]
 type = custom/script
 ;label-padding = 2
-label-foreground = #E3E3E3
+label-foreground = #575757
 ;label-background = #3555D0
 interval = 120
 exec = echo ""
@@ -320,6 +333,7 @@ click-left = "cp ~/.config/i3/Canvas-Polybar-theme/polybar/config ~/.config/poly
 
 [module/system-uptime-pretty]
 type = custom/script
+label = %{F#E3E3E3}up %output%%{F-}
 exec = sh ~/.config/i3/Canvas-Polybar-theme/polybar/scripts/system-uptime-pretty.sh
 interval = 30
 
@@ -338,10 +352,9 @@ click-left = sh ~/.scripts/updates-install.sh &
 
 [module/gmail]
 type = custom/script
-label = %{F#88A0FF} %output%%{F-}
+label = %{F#8997D4} %output%%{F-}
 interval = 30
 exec = ~/.scripts/gmail.py
-click-left = thunderbird &
 
 [module/home]
 type = internal/fs
@@ -390,12 +403,12 @@ interval = 2
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-overline = #4bffdc
 format = <label> <bar-used>
-label = %{F#E3E3E3}RAM %percentage_used:2%%%{F-}
+label = %{F#78D1A9}RAM %percentage_used:2%%%{F-}
 
 bar-used-width = 10
-bar-used-foreground-0 = #869FFF
-bar-used-foreground-1 = #869FFF
-bar-used-foreground-2 = #869FFF
+bar-used-foreground-0 = #78D1A9
+bar-used-foreground-1 = #78D1A9
+bar-used-foreground-2 = #78D1A9
 bar-used-foreground-3 = #FFA500
 bar-used-foreground-4 = #FF0000
 bar-used-fill = |
@@ -415,7 +428,8 @@ interval = 2.0
 ;udspeed-minwidth = 0
 
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %{A1:networkmanager_dmenu:}%{F#E3E3E3} %{F#89A8EE}%local_ip% (%downspeed:8%)%{F-}%{A}
+label-connected = %{A1:networkmanager_dmenu:}%{F#E3E3E3} %{F#89A8EE}(%downspeed:8%)%{F-}%{A}
+;label-connected = %{A1:networkmanager_dmenu:}%{F#E3E3E3} %{F#AEAEAE}%local_ip% (%downspeed:8%)%{F-}%{A}
 
 format-disconnected = <label-disconnected>
 label-disconnected = %{A1:networkmanager_dmenu:}%{F#797979}ip: ?%{F-}%{A}
@@ -429,18 +443,18 @@ warn-temperature = 60
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon0/temp1_input
 
 format = <ramp><label>
-;format-overline = #f50a4d
+format-underline = 
 format-warn = <ramp> <label-warn>
-;format-warn-overline = ${self.format-underline}
+format-warn-underline = ${self.format-underline}
 
-label = %{F#E3E3E3} %temperature-c%%{F-}
+label = %{F#DABB8F} %temperature-c%%{F-}
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ##FFFFFF
 
 [module/cpu]
 type = internal/cpu
@@ -461,6 +475,25 @@ format = <label>
 ;   %percentage-cores% - load percentage for each core
 ;   %percentage-core[1-9]% - load percentage for specific core
 label = %{F#E3E3E3}CPU %percentage:2%%%{F-}
+
+bar-load-width = 10
+bar-load-foreground-0 = #D9D9D9
+bar-load-foreground-1 = #D9D9D9
+bar-load-foreground-2 = #D9D9D9
+bar-load-foreground-3 = #D9D9D9
+bar-load-foreground-4 = #D9D9D9
+bar-load-foreground-5 = #D9D9D9
+bar-load-foreground-6 = #FFA500
+bar-load-foreground-7 = #FFA500
+bar-load-foreground-8 = #FF0000
+bar-load-gradient = true
+bar-load-indicator =
+bar-load-indicator-font = 3
+bar-load-fill = |
+bar-load-fill-font = 3
+bar-load-empty = |
+bar-load-empty-font = 3
+bar-load-empty-foreground = ${colors.foreground-alt}
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -504,12 +537,12 @@ ramp-volume-1 = 
 ramp-volume-2 = 
 
 bar-volume-width = 21
-bar-volume-foreground-0 = #869FFF
-bar-volume-foreground-1 = #869FFF
-bar-volume-foreground-2 = #869FFF
-bar-volume-foreground-3 = #869FFF
-bar-volume-foreground-4 = #869FFF
-bar-volume-foreground-5 = #869FFF
+bar-volume-foreground-0 = #D9D9D9
+bar-volume-foreground-1 = #D9D9D9
+bar-volume-foreground-2 = #D9D9D9
+bar-volume-foreground-3 = #D9D9D9
+bar-volume-foreground-4 = #D9D9D9
+bar-volume-foreground-5 = #D9D9D9
 bar-volume-foreground-6 = #FFA500
 bar-volume-foreground-7 = #FFA500
 bar-volume-foreground-8 = #FF0000
@@ -527,7 +560,7 @@ type = internal/date
 interval = 1
 
 date =
-date-alt = " %Y-%m-%d  "
+date-alt = "%{F#78D1A9} %d.%m.%Y  %{F-}"
 
 time =  %H:%M
 time-alt = %H:%M

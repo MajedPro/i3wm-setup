@@ -13,7 +13,16 @@ fi
 updates=$(("$updates_arch" + "$updates_aur"))
 
 if [ "$updates" -gt 0 ]; then
-    echo "  $updates"
+    echo " $updates"
 else
-    echo "  $updates"
+    echo " $updates"
 fi
+
+#if [ "$updates" -gt 0 ]; then
+#    echo $updates > ~/.scripts/updates
+#fi
+#
+#if [ "$updates" -gt 0 ]; then
+#    notify-send "$updates   new updates"
+#fi
+#

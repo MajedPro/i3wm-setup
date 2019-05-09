@@ -15,7 +15,7 @@ while i < index:
         wstr = wstr + ""
         i = i + 1
     elif output[i] == "#":
-        wstr = wstr + "  " 
+        wstr = wstr + "  " 
         i = i + 1
     else:
         i = i + 1

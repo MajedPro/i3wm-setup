@@ -3,8 +3,7 @@
  *
  * Based on Base16 Material Color Scheme (https://github.com/ntpeters/base16-materialtheme-scheme)
  *
- * User: Tomaszal
- * Copyright: Tomas Zaluckij
+ * User: Mad Max
  */
 
 * {
@@ -27,24 +26,26 @@
 
 	/*base0D: #00BCD4;*/
 
-	spacing: 0;
+	spacing: 2;
 	background-color: transparent;
 
-	font: "Roboto Mono 13";
+	font: "FontAwesome 12";
 }
 
 window {
 	transparency: "real";
-	/*fullscreen: true;*/
-	background-color: #191B1FEE; /*base00 + CC (80% opacity)*/
+	fullscreen: false;
+	width: 1600;
+	height: 800;
+	background-color: #191B1FFE; /*base00 + CC (80% opacity)*/
 }
 
 mainbox {
 	children: [inputbar, message, sidebar, listview];
 	spacing: 30px;
 	/*margin: 20%;*/
-	padding: 100px 100;
-	border: 0px;
+	padding: 70px 70;
+	border: 2px;
 	border-color: @base0D;
 }
 

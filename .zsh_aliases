@@ -1,0 +1,9 @@
+### ZSH aliases
+
+alias grep="grep --color=always"
+alias ls="ls --color=auto --group-directories-first"
+#alias ll="ls -l"
+alias ll="ls -laF"
+alias pocasie="curl sk.wttr.in/49.12494,18.32597"
+alias neomutt="env TERM=rxvt-256color neomutt"
+alias last-installed="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 30"

@@ -9,7 +9,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #000B1214
+background = #16181C
 background-alt = #444444
 ;foreground = ${xrdb:color7:#222}
 foreground = #FFFFFF
@@ -31,50 +31,68 @@ bottom = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-overline-size = 1
+overline-size = 2
 overline-color = #f00
 underline-size = 1
 underline-color = #00f
 
 border-top-size = 0
-border-top-color = #757D85
+border-top-color = #FFA500
 ;border-top-color = #009BAE
 
-border-bottom-size = 0
-border-bottom-color = #757D85
+border-bottom-size = 2
+border-bottom-color = #D83232
 
 border-left-size = 0
-border-left-color = #009BAE
+border-left-color = #FFA500
 
 border-right-size = 0
-border-right-color = #009BAE
+border-right-color = #FFA500
 
 padding-left = 0
-padding-right = 3
+padding-right = 1
 
-module-margin-left = 3
-module-margin-right = 3
+module-margin-left = 1
+module-margin-right = 1
 
 ; The separator will be inserted between the output of each module
 separator = %{F#535353}%{F-}
+;separator = %{F#535353}|%{F-}
 
-font-0 = Roboto:pixelsize=9;2
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+;font-0 = Iosevka:pixelsize=10;3
+font-0 = Misc Fixed:bold:pixelsize=14;3
+font-1 = Cantarell:bold:pixelsize=10;2
 font-2 = siji:pixelsize=9;1
 font-3 = FontAwesome:pixelsize=9;2
 font-4 = Monaco:pixelsize=9;2
+font-5 = Roboto:pixelsize=9;2
 
-modules-left = rofi i3
+;;font-0 = xos4 Terminus:pixelsize=9;2
+;font-0 = ypn envypn:pixelsize=9;2
+;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+;font-2 = siji:pixelsize=8.5;1
+;font-3 = FontAwesome:pixelsize=8.5;3
+;font-4 = Monaco:pixelsize=9;2
+;font-5 = Roboto:pixelsize=9;2
+
+;font-0 = Roboto:pixelsize=9;2
+;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+;font-2 = siji:pixelsize=9;1
+;font-3 = FontAwesome:pixelsize=9;2
+;font-4 = ypn envypn:pixelsize=9;2
+
+modules-left = rofi i3 bspwm
 modules-center = mpd
-modules-right = uptime gmail home filesystem memory temperature cpu pulseaudio date xkeyboard networkmanager network powermenu
+modules-right = system-uptime-pretty weather background updates-arch gmail home filesystem memory temperature cpu pulseaudio eth xkeyboard date reload powermenu
 
 tray-position = right
-tray-padding = 10
+;tray-detached = true
+;tray-padding = 0
 ;tray-transparent = true
-;tray-background = #004C56
+tray-background = #1B1B1B
 
-;wm-restack = bspwm
-wm-restack = i3
+wm-restack = bspwm
+;wm-restack = i3
 
 ;override-redirect = true
 
@@ -94,22 +112,40 @@ label = %title:0:30:...%
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = %index%
+# format = <label-state> <label-mode>
+# label-monitor = %name%
+
+# ws-icon-0 = 1;
+# ws-icon-1 = 2;
+# ws-icon-2 = 3;
+# ws-icon-3 = 4;
+# ws-icon-4 = 5;
+# ws-icon-5 = 6;
+# ws-icon-6 = 7;
+# ws-icon-7 = 8;
+# ws-icon-8 = 9;
+# ws-icon-9 = 10;
+# ;ws-icon-default = 
+
+label-focused = 
 label-focused-background = ${colors.background-alt}
-label-focused-underline = ${colors.primary}
-label-focused-overline = ${colors.primary}
-label-focused-padding = 2
+;label-focused-underline = #5072F8
+label-focused-overline = #5072F8
+label-focused-padding = 1
 
-label-occupied = %index%
-label-occupied-padding = 2
+label-occupied = 
+label-occupied-overline = #313131
+label-occupied-padding = 1
 
-label-urgent = %index%!
+label-urgent = 
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding = 1
 
-label-empty = %index%
+label-empty = 
 label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
+label-empty-padding = 1
+
+fuzzy-match = true
 
 [module/i3]
 type = internal/i3
@@ -118,49 +154,63 @@ pin-workspaces = true
 index-sort = true
 wrapping-scroll = false
 
-#ws-icon-0 = 1;
-#ws-icon-1 = 2;
-#ws-icon-2 = 3;
-#ws-icon-3 = 4;
-#ws-icon-4 = 5;
-ws-icon-default = 
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+;ws-icon-default = 
+
+;ws-icon-0 = 1;
+;ws-icon-1 = 2;
+;ws-icon-2 = 3;
+;ws-icon-3 = 4;
+;ws-icon-4 = 5;
+;ws-icon-5 = 6;torrent
+;ws-icon-6 = 7;
+;ws-icon-default = 
 
 label-dimmed-underline = ${root.background}
 
-label-mode-padding = 3
-label-mode-foreground = #0B1214
-label-mode-background = #FFA500
-;label-mode-overline = #FFB52A
+label-mode-padding = 2
+label-mode-font = 6
+label-mode-foreground = #202020
+label-mode-background = #ffb52a
+;label-mode-overline = #FFA500
 ;label-mode-underline = #FFA500
 
-label-focused = %name%:  %icon%
+label-focused = %name%
 label-focused-foreground = #FFFFFF
 label-focused-background = #D83232
-;label-focused-overline = #E13636
-;label-focused-underline = #E13636
+;label-focused-overline = #0CC8E0
+;label-focused-underline = #0CC8E0
 label-focused-font = 0
-label-focused-padding = 3
+label-focused-padding = 1
 
-label-unfocused = %name%:  %icon%
+label-unfocused = %name%
 ;label-unfocused-foreground = #f3f3f3
-label-unfocused-background = #2B3539
+label-unfocused-background = #1C2225
 ;label-unfocused-overline = #3f3f3f
 ;label-unfocused-underline = #3f3f3f
 label-unfocused-font = 0
-label-unfocused-padding = 3
+label-unfocused-padding = 1
 
-label-urgent = %name%:  %icon%
-label-urgent-foreground = #0B1214
-label-urgent-background = #FFB52A
-label-urgent-overline = #FFB52A
+label-urgent = %name%
+label-urgent-foreground = #3B3B3B
+label-urgent-background = #ffb52a
+label-urgent-overline = #ffb52a
 ;label-urgent-underline = #FFB52A
 label-urgent-font = 0
-label-urgent-padding = 3
+label-urgent-padding = 1
 
-label-visible = %name%:  %icon%
+label-visible = %name%
 label-visible-foreground = #55ffffff
 label-visible-font = 0
-label-visible-padding = 3
+label-visible-padding = 1
 
 [module/rofi]
 type = custom/script
@@ -168,14 +218,15 @@ label-padding = 2
 label-foreground = #FFFFFF
 label-background = #D83232
 interval = 120
-exec = echo "    "
+exec = echo ""
+;click-left = "rofi -show drun -show-icons -drun-icon-theme Newaita-dark >/dev/null 2>&1 &"
 click-left = "rofi -show drun >/dev/null 2>&1 &"
 
 [module/jgmenu]
 type = custom/script
 label-padding = 3
 label-foreground = #FFFFFF
-label-background = #E13636
+label-background = #007886
 ;label-overline = #FFA500
 ;label-underline = #0CC8E0
 interval = 120
@@ -192,8 +243,8 @@ port = 6600
 
 interval = 1
 
-format-online = %{F#88777A}<label-time>%{F-}   <bar-progress>   %{F#88777A}<label-song>%{F-}
-;format-online = %{F#778688}<icon-stop>    <toggle>    <icon-prev>    <icon-next>   <label-time>%{F-}   <bar-progress>   %{F#778688}<label-song>%{F-}
+format-online = %{F#778688}<label-time>%{F-} <bar-progress> %{F#778688}<label-song>%{F-}
+;format-online = %{F#778688}<icon-stop>    <toggle>    <icon-prev>    <icon-next>   %{F-}<bar-progress>   %{F#778688}<label-time>   [ <label-song> ]%{F-}
 
 ; Available tags:
 ;   <label-offline>
@@ -206,7 +257,7 @@ format-online = %{F#88777A}<label-time>%{F-}   <bar-progress>   %{F#88777A}<labe
 ;   %date%
 ;   %title%
 ; Default: %artist% - %title%
-label-song = %artist% - %title%
+label-song = %title%
 
 ; Available tokens:
 ;   %elapsed%
@@ -238,9 +289,9 @@ toggle-on-foreground = #ff
 toggle-off-foreground = #55
 
 ; Only applies if <bar-progress> is used
-bar-progress-width = 30
+bar-progress-width = 20
 bar-progress-indicator = %{F#505050}%{F-}
-bar-progress-fill = %{F#B4B4B4}|%{F-}
+bar-progress-fill = %{F#D96767}|%{F-}
 bar-progress-empty = %{F#505050}|%{F-}
 
 bar-progress-indicator-font = 3
@@ -248,25 +299,58 @@ bar-progress-fill-font = 3
 bar-progress-empty-font = 3
 bar-progress-empty-foreground = ${colors.foreground-alt}
 
-[module/pkg]
+[module/weather]
 type = custom/script
-label-foreground = #FF9090
-exec = ~/.config/polybar/pkg.sh
-click-left = ~/.config/polybar/update.sh
-click-right = ~/.config/polybar/aur-update.sh
+;label-padding = 2
+label-foreground = #FF7575
+;label-background = #3555D0
+interval = 300
+exec = sh ~/.scripts/weather-i3.sh -i
+;click-left =
+
+[module/background]
+type = custom/script
+;label-padding = 2
+label-foreground = #FFFFFF
+;label-background = #5072F8
+interval = 120
+exec = echo ""
+click-left = "feh --randomize --bg-fill ~/Pictures/backgrounds/* &"
+
+[module/reload]
+type = custom/script
+;label-padding = 2
+label-foreground = #6F6F6F
+;label-background = #3555D0
+interval = 120
+exec = echo ""
+click-left = "cp ~/.config/i3/Abrus-Polybar-theme/polybar/config ~/.config/polybar/ &"
+
+[module/system-uptime-pretty]
+type = custom/script
+exec = sh ~/.config/i3/Canvas-Polybar-theme/polybar/scripts/system-uptime-pretty.sh
+interval = 30
 
 [module/uptime]
 type = custom/script
-label = %{F#C8C8C8}%output%%{F-}
+label = %{F#E3E3E3}%output%%{F-}
 exec = uptime -p
 interval = 5
 
+[module/updates-arch]
+type = custom/script
+label-foreground = #E3E3E3
+exec = sh ~/.scripts/updates-arch-combined.sh
+interval = 60
+click-left = sh ~/.scripts/updates-install.sh &
+;click-right = sh ~/.scripts/update-output.sh &
+
 [module/gmail]
 type = custom/script
-label = %{F#FF7676}  %output%%{F-}
+label = %{F#FF7575} %output%%{F-}
 interval = 30
 exec = ~/.scripts/gmail.py
-click-left = thunderbird &
+click-left = firefox --new-window https://mail.google.com/mail/u/1/#inbox &
 
 [module/home]
 type = internal/fs
@@ -284,7 +368,7 @@ mount-0 = /home
 ;   %free%
 ;   %used%
 ; Default: %mountpoint% %percentage_free%%
-label-mounted = %{F#C8C8C8}  %percentage_used%%%{F-}
+label-mounted = %{F#E3E3E3} %percentage_used%%%{F-}
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -304,49 +388,47 @@ mount-0 = /
 ;   %free%
 ;   %used%
 ; Default: %mountpoint% %percentage_free%%
-label-mounted = %{F#FF7676}  %percentage_used%%%{F-}
+label-mounted = %{F#FF7575} %percentage_used%%%{F-}
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+;format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-overline = #4bffdc
 format = <label> <bar-used>
-label = %{F#C8C8C8}RAM %percentage_used%%%{F-}
+label = %{F#E3E3E3}RAM %percentage_used:2%%%{F-}
 
 bar-used-width = 10
-bar-used-foreground-0 = #FFB7B7
-bar-used-foreground-1 = #FFB7B7
-bar-used-foreground-2 = #FFB7B7
-bar-used-foreground-3 = #FFB7B7
-bar-used-foreground-4 = #FFB7B7
+bar-used-foreground-0 = #FF9F9F
+bar-used-foreground-1 = #FF9F9F
+bar-used-foreground-2 = #FF9F9F
+bar-used-foreground-3 = #FF9F9F
+bar-used-foreground-4 = #FF9F9F
 bar-used-fill = |
 bar-used-fill-font = 3
 bar-used-empty = |
 bar-used-empty-font = 3
 bar-used-empty-foreground = #444444
 bar-used-gradient = false
-bar-used-indicator = 
+bar-used-indicator =
 bar-used-indicator-font = 3
 
 [module/eth]
 type = internal/network
 interface = enp2s0
-interval = 2
+exec = check-network
+interval = 2.0
+;udspeed-minwidth = 0
 
-;format-connected-overline = #55aa55
-format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %{F#6CEFFF}ip:  %local_ip% (%downspeed%)%{F-}
+label-connected = %{A1:networkmanager_dmenu:}%{F#E3E3E3} %{F#FF7575}(%downspeed:8%)%{F-}%{A}
+;label-connected = %{A1:networkmanager_dmenu:}%{F#E3E3E3} %{F#FF7575}%local_ip% (%downspeed:8%)%{F-}%{A}
 
-;format-disconnected = ∅ disconnected
 format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-label-disconnected = %{F#797979}ip: ?%{F-}
-;label-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected = %{A1:networkmanager_dmenu:}%{F#797979}ip: ?%{F-}%{A}
 
 [module/temperature]
 type = internal/temperature
@@ -356,13 +438,13 @@ warn-temperature = 60
 
 hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon0/temp1_input
 
-format = <ramp> <label>
+format = <label>
 ;format-overline = #f50a4d
 format-warn = <ramp> <label-warn>
 ;format-warn-overline = ${self.format-underline}
 
-label = %{F#C8C8C8} %temperature%%{F-}
-label-warn = %temperature%
+label = %{F#FFC345} %temperature-c%%{F-}
+label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 
@@ -388,7 +470,7 @@ format = <label>
 ;   %percentage% (default) - total cpu load
 ;   %percentage-cores% - load percentage for each core
 ;   %percentage-core[1-9]% - load percentage for specific core
-label = %{F#C8C8C8}CPU %percentage%%%{F-}
+label = %{F#E3E3E3}CPU %percentage:2%%%{F-}
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -409,7 +491,7 @@ interval = 5
 ;   <label-volume> (default)
 ;   <ramp-volume>
 ;   <bar-volume>
-format-volume = %{F#C8C8C8}<ramp-volume> <label-volume> <bar-volume>%{F-}
+format-volume = %{F#E3E3E3}<ramp-volume> <label-volume> <bar-volume>%{F-}
 
 ; Available tags:
 ;   <label-muted> (default)
@@ -419,7 +501,7 @@ format-volume = %{F#C8C8C8}<ramp-volume> <label-volume> <bar-volume>%{F-}
 
 ; Available tokens:
 ;   %percentage% (default)
-;label-volume = %percentage%%
+label-volume = %percentage:2%%
 
 ; Available tokens:
 ;   %percentage% (default)
@@ -432,17 +514,17 @@ ramp-volume-1 = 
 ramp-volume-2 = 
 
 bar-volume-width = 21
-bar-volume-foreground-0 = #FFB7B7
-bar-volume-foreground-1 = #FFB7B7
-bar-volume-foreground-2 = #FFB7B7
-bar-volume-foreground-3 = #FFB7B7
-bar-volume-foreground-4 = #FFB7B7
-bar-volume-foreground-5 = #FFB7B7
-bar-volume-foreground-6 = #FFB7B7
-bar-volume-foreground-7 = #FFB7B7
-bar-volume-foreground-8 = #FFB7B7
+bar-volume-foreground-0 = #FF9F9F
+bar-volume-foreground-1 = #FF9F9F
+bar-volume-foreground-2 = #FF9F9F
+bar-volume-foreground-3 = #FF9F9F
+bar-volume-foreground-4 = #FF9F9F
+bar-volume-foreground-5 = #FF9F9F
+bar-volume-foreground-6 = #FF9F9F
+bar-volume-foreground-7 = #FF9F9F
+bar-volume-foreground-8 = #FF9F9F
 bar-volume-gradient = true
-bar-volume-indicator = 
+bar-volume-indicator =
 bar-volume-indicator-font = 3
 bar-volume-fill = |
 bar-volume-fill-font = 3
@@ -455,22 +537,22 @@ type = internal/date
 interval = 1
 
 date =
-date-alt = " %Y-%m-%d  "
+date-alt = "%{F#CCFF93} %d.%m.%Y  %{F-}"
 
-time =   %H:%M
-time-alt = %H:%M
+time =  %H:%M
+time-alt =  %H:%M
 
-format-prefix = 
+;format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-overline = #0a6cf5
 
-label = %{F#FFFFFF}%date% %time%%{F-}
+label = %{F#FFFFFF}%date%%time%%{F-}
 
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = " "
+;format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-prefix-overline = ${colors.secondary}
 
@@ -479,7 +561,7 @@ format-prefix-foreground = ${colors.foreground-alt}
 ;   %name%
 ;   %number%
 ; Default: %layout%
-label-layout = %{F#C8C8C8} %layout%%{F-}
+label-layout = %{F#E3E3E3} %layout%%{F-}
 ;label-layout-overline = ${colors.secondary}
 
 ; Available tokens:
@@ -490,20 +572,13 @@ label-indicator-margin = 1
 label-indicator-background = ${colors.secondary}
 ;label-indicator-overline = ${colors.secondary}
 
-[module/networkmanager]
-type = custom/text
-interface = enp2s0
-content = %{F#C8C8C8}%{F-}
-content-foreground = ${colors.foreground}
-click-left = networkmanager_dmenu
-
 [module/network]
 type = internal/network
 interface = enp2s0
-;exec = check-network
-click-left = networkmanager_dmenu
+exec = check-network
+interval = 2
 ;label-padding = 1
-;tail = true
+tail = true
 
 ; Available tags:
 ;   <label-connected> (default)
@@ -524,82 +599,23 @@ format-disconnected = <label-disconnected>
 ;   %downspeed% [wireless+wired]
 ;   %linkspeed% [wired]
 ; Default: %ifname% %local_ip%
-label-connected = %{F#C8C8C8}%local_ip%%{F-}
+label-connected = %{A1:networkmanager_dmenu:}%{F#E3E3E3}  %{F#E3E3E3}%downspeed:8% %{F#849CF8}%{A}
 label-connected-foreground = #eefafafa
 
 ; Available tokens:
 ;   %ifname%    [wireless+wired]
 ; Default: (none)
-label-disconnected = not connected
+label-disconnected = %{A1:networkmanager_dmenu:}not connected%{A}
 label-disconnected-foreground = #66ffffff
 
 [module/powermenu]
-type = custom/menu
-; expand-right = true
-
-format-spacing = 1
-
-label-open = " "
-label-open-font = 0
-label-open-background = ${colors.background}
-label-open-foreground = #FF7676
-label-close = " Cancel"
-label-close-font = 0
-label-close-background = ${colors.background}
-label-close-foreground = #FF7676
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 =  %{F#A4A4A4}Logout%{F-}
-menu-0-0-font = 0
-menu-0-0-exec = menu-open-1
-menu-0-1 =  %{F#A4A4A4}Reboot%{F-}
-menu-0-1-font = 0
-menu-0-1-exec = menu-open-2
-menu-0-2 =  %{F#A4A4A4}Power Off%{F-}
-menu-0-2-font = 0
-menu-0-2-exec = menu-open-3
-menu-0-3 =  %{F#A4A4A4}Lock%{F-}
-menu-0-3-font = 0
-menu-0-3-exec = menu-open-4
-menu-0-4 =  %{F#A4A4A4}Suspend%{F-}
-menu-0-4-font = 0
-menu-0-4-exec = menu-open-5
-
-menu-1-0 = %{F#FFD079}%{F-} %{F#D4B06C}Logout%{F-}
-menu-1-0-font = 0
-menu-1-0-exec = i3-msg exit
-menu-1-1 =  %{F#A4A4A4}Back%{F-}
-menu-1-1-font = 0
-menu-1-1-exec = menu-open-0
-
-menu-2-0 = %{F#FFD079}%{F-} %{F#D4B06C}Reboot%{F-}
-menu-2-0-font = 0
-menu-2-0-exec = systemctl reboot
-menu-2-1 =  %{F#A4A4A4}Back%{F-}
-menu-2-1-font = 0
-menu-2-1-exec = menu-open-0
-
-menu-3-0 = %{F#FFD079}%{F-} %{F#D4B06C}Power Off%{F-}
-menu-3-0-font = 0
-menu-3-0-exec = systemctl poweroff
-menu-3-1 =  %{F#A4A4A4}Back%{F-}
-menu-3-1-font = 0
-menu-3-1-exec = menu-open-0
-
-menu-4-0 = %{F#FFD079}%{F-} %{F#D4B06C}Lock%{F-}
-menu-4-0-font = 0
-menu-4-0-exec = sh /home/lubomir/.config/lock.sh && sleep 1
-menu-4-1 =  %{F#A4A4A4}Back%{F-}
-menu-4-1-font = 0
-menu-4-1-exec = menu-open-0
-
-menu-5-0 = %{F#FFD079}%{F-} %{F#D4B06C}Suspend%{F-}
-menu-5-0-font = 0
-menu-5-0-exec = systemctl suspend && sh /home/lubomir/.config/lock.sh && sleep 1
-menu-5-1 =  %{F#A4A4A4}Back%{F-}
-menu-5-1-font = 0
-menu-5-1-exec = menu-open-0
+type = custom/script
+label-padding = 2
+label-foreground = #FF7575
+;label-background = #3555D0
+interval = 120
+exec = echo ""
+click-left = sh ~/.scripts/power-menu.sh &
 
 [settings]
 screenchange-reload = true

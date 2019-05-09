@@ -90,7 +90,7 @@ URxvt.font:                       xft:Iosevka:size=10
 !! terminus names see end of file!
 
 URxvt.depth:                      32
-URxvt.background:                 [95]#16181C
+URxvt.background:                 [90]#16181C
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
