@@ -109,20 +109,13 @@ status.register("temp",
     alert_color = "#FF3B3B",
     format = "  {temp:.0f}°C",)
 
-status.register("cpu_usage",
+status.register("cpu_usage_graph",
     hints = {"separator": True, "separator_block_width": 15},
-#    format=": {usage_cpu0:02}% {usage_cpu1:02}% {usage_cpu2:02}% {usage_cpu3:02}%",
-#    format = "  {usage:03}%",
-    color = "#15FF00",
-    format = "CPU: {usage:02}%",)
-
-# status.register("cpu_usage_graph",
-#     hints = {"separator": True, "separator_block_width": 15},
-#     graph_width = 15,
-#     graph_style = 'blocks',
-#     format = '{cpu_graph}',
-#     cpu = 'usage_cpu',
-#     direction = 'left-to-right',)
+    graph_width = 10,
+    graph_style = 'blocks',
+    format = 'CPU: {usage:02}% {cpu_graph}',
+    cpu = 'usage_cpu',
+    direction = 'left-to-right',)
 
 # status.register("cpu_usage_bar",
 #     hints = {"separator": True, "separator_block_width": 15},
@@ -130,6 +123,13 @@ status.register("cpu_usage",
 #     color = "#FFC550",
 #     bar_type = "horizontal",
 #     cpu = 'usage_cpu',)
+
+# status.register("cpu_usage",
+#     hints = {"separator": True, "separator_block_width": 15},
+# #    format=": {usage_cpu0:02}% {usage_cpu1:02}% {usage_cpu2:02}% {usage_cpu3:02}%",
+# #    format = "  {usage:03}%",
+#     color = "#15FF00",
+#     format = "CPU: {usage:02}%",)
 
 status.register("mem",
     hints = {"separator": True, "separator_block_width": 15},
@@ -158,7 +158,7 @@ status.register("disk",
     hints = {"separator": True, "separator_block_width": 15},
     path = "/home",
     format = "  {avail} GB",
-    on_leftclick = "thunar",)
+    on_leftclick = "nautilus --new-window",)
 
 status.register("uname",
     hints = {"separator": True, "separator_block_width": 15},
@@ -185,13 +185,13 @@ status.register("mail",
         imap.IMAP(
              # port and ssl are the defaults
              host="imap.googlemail.com", port=993, ssl=True,
-             username="lubomir.pecena@gmail.com", password="oficialnejsie"
+             username="your.mail@gmail.com", password="password"
             )
     ])
 
 # status.register("redshift",
 #     hints = {"separator": True, "separator_block_width": 15},
-#     color = "#9AAEFF",
+#     color = "#A1B4FF",
 #     error_color = "#FF2F2F",
 #     format = "{inhibit} {temperature}K",
 #     format_inhibit = ["On", "Off"],
@@ -200,7 +200,7 @@ status.register("mail",
 
 status.register("uptime",
     hints = {"separator": True, "separator_block_width": 15},
-    color = "#ABBCFF",
+    color = "#A1B4FF",
     interval = 5,
     format = "  {days}d {hours}h {mins}m",)
 

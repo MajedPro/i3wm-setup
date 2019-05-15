@@ -185,7 +185,7 @@ status.register("mail",
         imap.IMAP(
              # port and ssl are the defaults
              host="imap.googlemail.com", port=993, ssl=True,
-             username="lubomir.pecena@gmail.com", password="oficialnejsie"
+             username="your.mail@gmail.com", password="password"
             )
     ])
 
