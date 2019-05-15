@@ -6,6 +6,7 @@ import os.path
 import requests
 
 from i3pystatus import Status, IntervalModule
+from i3pystatus.core.util import internet
 from i3pystatus.core.command import run_through_shell
 from i3pystatus.updates import pacman, cower
 from i3pystatus.mail import imap
@@ -65,14 +66,23 @@ status.register("pulseaudio",
     color_muted = "#FFA500",
     on_leftclick = "pavucontrol",)
 
-status.register("network",
+status.register("online",
     hints = {"separator": True, "separator_block_width": 15},
-    interface = "enp2s0",
-    color_up = "#1EDC04",
-    color_down = "#FF0000",
-    format_up = "  {v4}",
-    format_down = "  disconnected",
+    color = '#1EDC04',
+    color_offline = '#ff0000',
+    format_online = '  online',
+    format_offline = 'offline',
+    interval = 5,
     on_leftclick = "networkmanager_dmenu",)
+
+# status.register("network",
+#     hints = {"separator": True, "separator_block_width": 15},
+#     interface = "enp2s0",
+#     color_up = "#1EDC04",
+#     color_down = "#FF0000",
+#     format_up = "  {v4}",
+#     format_down = "  disconnected",
+#     on_leftclick = "networkmanager_dmenu",)
 
 status.register("external_ip",
     hints = {"separator": True, "separator_block_width": 15},
@@ -84,7 +94,7 @@ status.register("external_ip",
     ip_website = "https://api.ipify.org",
     timeout = 5,
     color = "#FFFFFF",
-    color_hide = "#FFC600",
+    color_hide = "#FFD232",
     color_down = "#FF0000",
 
     on_leftclick = "switch_hide",
@@ -160,10 +170,10 @@ status.register("disk",
     format = "  {avail} GB",
     on_leftclick = "nautilus --new-window",)
 
-status.register("uname",
-    hints = {"separator": True, "separator_block_width": 15},
-    format = "  {sysname}",
-    on_leftclick = "sh ~/.scripts/i3pystatus/urxvt-uname.sh",)
+# status.register("uname",
+#     hints = {"separator": True, "separator_block_width": 15},
+#     format = "  {sysname}",
+#     on_leftclick = "sh ~/.scripts/i3pystatus/urxvt-uname.sh",)
 
 status.register("updates",
     hints = {"separator": True, "separator_block_width": 15},
