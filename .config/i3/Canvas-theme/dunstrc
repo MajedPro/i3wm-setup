@@ -29,7 +29,7 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "300x30-25+25"
+    geometry = "300x30-25+35"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -64,7 +64,7 @@
     frame_width = 1
 
     # Defines color of the frame around the notification window.
-    frame_color = "#6C87F0"
+    frame_color = "#637FEB"
 #    frame_color = "#A9A9A9"
 
     # Define a color for the separator.
@@ -143,7 +143,7 @@
     ignore_newline = no
 
     # Merge multiple notifications with the same content
-    stack_duplicates = false
+    stack_duplicates = true
 
     # Hide the count of merged notifications with the same content
     hide_duplicate_count = false
@@ -240,14 +240,14 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#4969E2"
+    background = "#4163E5"
     foreground = "#E1E1E1"
     timeout = 8
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#4969E2"
+    background = "#4163E5"
     foreground = "#E1E1E1"
     timeout = 8
     # Icon for notifications with normal urgency, uncomment to enable

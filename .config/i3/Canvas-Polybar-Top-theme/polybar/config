@@ -23,7 +23,7 @@ alert = #bd2c40
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 21
+height = 20
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
@@ -63,7 +63,7 @@ separator = %{F#535353}%{F-}
 
 font-0 = Iosevka:bold:pixelsize=10;3
 ;font-0 = Misc Fixed:bold:pixelsize=14;3
-font-1 = Cantarell:bold:pixelsize=10;2
+font-1 = Cantarell:bold:pixelsize=10;1
 font-2 = siji:pixelsize=9;1
 font-3 = FontAwesome:pixelsize=9;2
 font-4 = Monaco:pixelsize=9;2
@@ -325,7 +325,7 @@ label-foreground = #777777
 ;label-background = #3555D0
 interval = 120
 exec = echo ""
-click-left = "cp ~/.config/i3/Canvas-Polybar-Envypn-theme/polybar/config ~/.config/polybar/ &"
+click-left = "cp ~/.config/i3/Canvas-Polybar-Top-theme/polybar/config ~/.config/polybar/ &"
 
 
 [module/system-uptime-pretty]
@@ -474,6 +474,16 @@ format = <label>
 ;   %percentage-cores% - load percentage for each core
 ;   %percentage-core[1-9]% - load percentage for specific core
 label = %{F#E3E3E3}CPU %percentage:2%%%{F-}
+
+;ramp-coreload-spacing = 1
+;ramp-coreload-0 = ▁
+;ramp-coreload-1 = ▂
+;ramp-coreload-2 = ▃
+;ramp-coreload-3 = ▄
+;ramp-coreload-4 = ▅
+;ramp-coreload-5 = ▆
+;ramp-coreload-6 = ▇
+;ramp-coreload-7 = █
 
 [module/pulseaudio]
 type = internal/pulseaudio

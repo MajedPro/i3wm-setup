@@ -6,7 +6,7 @@ set statusbar-fg                "#DADADA" #04
 set statusbar-bg                "#464646" #01
 
 set inputbar-bg                 "#272727" #00 currently not used
-set inputbar-fg                 "#D7D7D7" #02
+set inputbar-fg                 "#E0E0E0" #02
 
 set notification-error-bg       "#515FA7" #08
 set notification-error-fg       "#B3B3B3" #00
@@ -27,7 +27,7 @@ set notification-bg             "#edb54b" #0B
 set notification-fg             "#313131" #00
 
 set recolor-lightcolor          "#272727" #00
-set recolor-darkcolor           "#CCCCCC" #06
+set recolor-darkcolor           "#DBDBDB" #06
 set recolor                     "true"
 
 set page-padding                "1"

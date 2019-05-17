@@ -115,7 +115,7 @@ status.register("temp",
     hints = {"separator": True, "separator_block_width": 15},
     file = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp1_input",
     alert_temp = 60,
-    color = "#FFDB98",
+    color = "#FFCB59",
     alert_color = "#FF3B3B",
     format = "  {temp:.0f}°C",)
 

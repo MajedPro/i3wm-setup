@@ -13,8 +13,8 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Noto Sans bold 8
-#font pango:xos4 Terminus 9
+#font pango:Noto Sans bold 8
+font pango: misc fixed bold 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -81,13 +81,13 @@ bindsym $mod+F1 exec nautilus --new-window
 bindsym $mod+F2 exec firefox
 bindsym $mod+Shift+F2 exec firefox -private-window
 #bindsym $mod+F2 exec --no-startup-id google-chrome-stable
-bindsym $mod+F3 exec mousepad
+bindsym $mod+F3 exec thunderbird
 #bindsym $mod+c exec --no-startup-id "rofi -modi window,drun, -show drun -font 'hack 11' -show -columns 2"
 #bindsym $mod+c exec --no-startup-id rofi -show drun
 bindsym $mod+c exec --no-startup-id rofi -show drun -show-icons -drun-icon-theme Newaita-dark
 bindsym $mod+Shift+f exec --no-startup-id rofi -show find -modi find:~/.scripts/finder.sh
 bindsym $mod+F4 exec evince
-bindsym $mod+Shift+F3 exec gksu geany
+#bindsym $mod+Shift+F3 exec gksu geany
 bindsym $mod+F5 exec urxvt -e htop
 bindsym $mod+g exec subl
 bindsym $mod+n exec urxvt -e ncmpcpp
@@ -232,8 +232,8 @@ for_window [class="Imagewriter"] floating enable border normal
 for_window [class="vlc"] floating enable border normal 2
 #for_window [class="smplayer"] floating enable; move position center border pixel 2
 for_window [class="SimpleScreenRecorder"] floating enable border normal 2
-for_window [class="Transmission-gtk"] floating disable border pixel 2
-for_window [class="Viewnior"] floating enable border normal 2
+#for_window [class="Transmission-gtk"] floating disable border pixel 2
+#for_window [class="Viewnior"] floating enable border normal 2
 for_window [class="Ristretto"] floating enable border normal 2
 for_window [class="Gpicview"] floating enable border normal 2
 for_window [class="Gpick"] floating enable border normal 2
@@ -318,8 +318,9 @@ exec_always --no-startup-id sh $HOME/.config/polybar/launch.sh
 #exec --no-startup-id xfce4-panel --disable-wm-check
 exec --no-startup-id compton -b --config ~/.config/compton-i3.conf
 #exec --no-startup-id compton -b --config ~/.config/compton.conf
-exec --no-startup-id nitrogen --restore
-#exec --no-startup-id feh --bg-fill ~/Pictures/backgrounds/Dark.jpg
+#exec --no-startup-id nitrogen --restore
+#exec_always --no-startup-id feh --bg-fill /home/lubomir/Pictures/backgrounds/i3wm.png
+exec_always --no-startup-id feh --bg-fill /home/lubomir/Pictures/backgrounds/canvas-i3.png
 exec --no-startup-id start-pulseaudio-x11
 #exec --no-startup-id volumeicon
 exec --no-startup-id gnome-settings-daemon
@@ -332,12 +333,12 @@ exec --no-startup-id setxkbmap -layout "us,sk(qwerty),cz(qwerty)" -option grp:al
 #exec --no-startup-id nm-applet
 exec --no-startup-id pulseaudio -k
 #exec --no-startup-id ~/.scripts/alternating_layouts.py
-exec --no-startup-id redshift -l 48:17
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+#exec --no-startup-id pkill redshift && sleep 5; redshift &
+exec --no-startup-id pkill redshift && sleep 5; redshift -l 48.16:17.11 &
 #exec --no-startup-id sh ~/.scripts/conky-startup.sh
-#exec --no-startup-id sleep 25; sh ~/.scripts/update-output.sh
 #exec --no-startup-id xautolock -time 15 -locker 'sh /home/lubomir/.config/lock.sh'
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-#exec_always --no-startup-id sh ~/.scripts/read.sh
 
 ## Vypnutie vypinania monitoru
 exec --no-startup-id xset -dpms s off

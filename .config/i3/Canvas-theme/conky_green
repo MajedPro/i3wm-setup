@@ -44,6 +44,6 @@ ${voffset 10}${goto 40}${color}Swap${font Bitstream Vera Sans:bold:size=8}$align
 ${voffset 10}${goto 40}${color}${font Bitstream Vera Sans:bold:size=8}GMail:${color2}${alignr}${execpi 60 python ~/.scripts/gmail.py}
 
 ${voffset 10}${color2}${alignr}${execi 1200 whoami}@${nodename}
-${voffset 5}${alignr}${color2}${font Bitstream Vera Sans:size=8}uptime: ${color}${uptime_short}
+#${voffset 5}${alignr}${color2}${font Bitstream Vera Sans:size=8}uptime: ${color}${uptime_short}
 ${voffset 5}${color2}${font Bitstream Vera Sans:size=8}${alignr}kernel: ${color}${kernel}
 ]]
